@@ -1,0 +1,3362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<meta name="theme-color" content="#0a0908">
+<title>The Flood &amp; the Locked Door — A Codex by Jacob E. Thomas, PhD</title>
+<meta name="description" content="A liturgy for the bottleneck generation. Codex of the Flood, Volume II. Assembled from the documented public record by Jacob E. Thomas, PhD.">
+<meta name="author" content="Jacob E. Thomas, PhD">
+
+<!-- Open Graph -->
+<meta property="og:title" content="The Flood &amp; the Locked Door">
+<meta property="og:description" content="A liturgy for the bottleneck generation. Codex of the Flood, Volume II.">
+<meta property="og:image" content="./Cover_Plate.png">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Flood &amp; the Locked Door">
+<meta name="twitter:description" content="A liturgy for the bottleneck generation. Codex of the Flood, Volume II.">
+<meta name="twitter:image" content="./Cover_Plate.png">
+
+<!-- Favicon: ember sigil -->
+<link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Preload key plates -->
+<link rel="preload" as="image" href="./Cover_Plate.webp" type="image/webp">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js" defer></script>
+
+<style>
+/* ════════════════════════════════════════════════════════════
+   CODEX OF THE FLOOD — VOLUME II — REVISION III
+   ════════════════════════════════════════════════════════════ */
+
+:root {
+  --void: #0a0908;
+  --void-2: #131110;
+  --void-3: #1b1816;
+  --void-4: #211d1a;
+  --bone: #ebe4d2;
+  --bone-2: #c8c1ae;
+  --bone-dim: #9b9484;
+  --bone-faint: #6a655b;
+  --bone-shadow: #3a3631;
+  --ember: #c9a227;
+  --ember-deep: #8a6f15;
+  --ember-pale: #e3c772;
+  --ember-bright: #f0d678;
+  --rust: #8b3a1b;
+  --rust-deep: #5a2410;
+  --blood: #6b1818;
+  --witness: #7a9e8a;
+  --hairline: rgba(201, 162, 39, 0.16);
+  --hairline-strong: rgba(201, 162, 39, 0.42);
+  --hairline-blood: rgba(139, 24, 24, 0.4);
+  --hairline-witness: rgba(122, 158, 138, 0.32);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--bone);
+  font-family: 'EB Garamond', Georgia, serif;
+  font-size: 18px;
+  line-height: 1.75;
+  font-weight: 400;
+  overflow-x: hidden;
+  background-image:
+    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(201, 162, 39, 0.045) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 30%, rgba(139, 58, 27, 0.025) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 20% 70%, rgba(107, 24, 24, 0.02) 0%, transparent 70%),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.92 0 0 0 0 0.89 0 0 0 0 0.82 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-attachment: fixed;
+}
+
+::selection { background: var(--ember); color: var(--void); }
+
+/* ──────────── PROGRESS BAR ──────────── */
+#progress {
+  position: fixed; top: 0; left: 0;
+  height: 2px; width: 0%;
+  background: linear-gradient(to right, var(--ember-deep), var(--ember), var(--ember-bright));
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px rgba(201, 162, 39, 0.6);
+}
+
+/* ──────────── FRAGMENT INDICATOR ──────────── */
+#indicator {
+  position: fixed;
+  top: 14px; right: 16px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  color: var(--ember);
+  text-transform: uppercase;
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity 0.6s;
+  pointer-events: none;
+  text-align: right;
+  background: rgba(10, 9, 8, 0.78);
+  padding: 6px 10px;
+  border: 1px solid var(--hairline);
+  backdrop-filter: blur(8px);
+}
+#indicator.visible { opacity: 1; }
+#indicator .sep { color: var(--bone-faint); margin: 0 4px; }
+
+/* ──────────── GATE ──────────── */
+#gate {
+  position: fixed;
+  inset: 0;
+  background: var(--void);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 24px;
+  text-align: center;
+  transition: opacity 1.4s ease-out, visibility 1.4s;
+  background-image:
+    radial-gradient(ellipse at center, rgba(107, 24, 24, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(201, 162, 39, 0.04) 0%, transparent 60%);
+}
+#gate.dismissed { opacity: 0; visibility: hidden; }
+
+.gate-sigil {
+  width: 72px; height: 72px;
+  margin-bottom: 36px;
+  opacity: 0;
+  animation: pulseIn 2s ease-out 0.2s forwards, slowSpin 80s linear 0.2s infinite;
+}
+@keyframes pulseIn {
+  0% { opacity: 0; transform: scale(0.6); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes slowSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.gate-classification {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.42em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: fadeUp 1.6s ease-out 0.7s forwards;
+}
+.gate-classification.gold { color: var(--ember); margin-bottom: 40px; }
+
+.gate-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(40px, 11vw, 76px);
+  line-height: 1;
+  color: var(--bone);
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+  opacity: 0;
+  animation: fadeUp 2s ease-out 1.1s forwards;
+}
+.gate-title em {
+  color: var(--ember-pale);
+  font-style: italic;
+  font-weight: 300;
+  display: block;
+  margin-top: 2px;
+}
+.gate-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(15px, 4vw, 19px);
+  color: var(--bone-dim);
+  margin-bottom: 48px;
+  max-width: 32ch;
+  opacity: 0;
+  animation: fadeUp 2s ease-out 1.5s forwards;
+}
+
+.gate-warning {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  line-height: 1.9;
+  color: var(--bone-dim);
+  max-width: 36ch;
+  margin: 0 auto 40px;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  animation: fadeUp 2s ease-out 1.9s forwards;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  padding: 18px 0;
+}
+.gate-warning strong { color: var(--ember); font-weight: 500; }
+
+#enter-btn {
+  background: transparent;
+  border: 1px solid var(--ember);
+  color: var(--ember);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  padding: 18px 36px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  opacity: 0;
+  animation: fadeUp 2s ease-out 2.3s forwards;
+  position: relative;
+}
+#enter-btn::before, #enter-btn::after {
+  content: ''; position: absolute;
+  width: 8px; height: 8px;
+  transition: all 0.4s;
+}
+#enter-btn::before { top: -1px; left: -1px; border-top: 1px solid var(--ember); border-left: 1px solid var(--ember); }
+#enter-btn::after { bottom: -1px; right: -1px; border-bottom: 1px solid var(--ember); border-right: 1px solid var(--ember); }
+#enter-btn:hover, #enter-btn:active {
+  background: var(--ember);
+  color: var(--void);
+  letter-spacing: 0.44em;
+}
+#enter-btn:hover::before, #enter-btn:hover::after { width: 14px; height: 14px; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ──────────── LAYOUT ──────────── */
+.scroll {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+/* ──────────── CODEX HEADER ──────────── */
+.codex-header {
+  padding: 80px 0 40px;
+  text-align: center;
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: 60px;
+}
+
+.codex-classification {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.codex-classification.gold { color: var(--ember); }
+
+.codex-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(38px, 9vw, 64px);
+  line-height: 1.02;
+  color: var(--bone);
+  margin: 18px 0 14px;
+  letter-spacing: -0.01em;
+}
+.codex-title em {
+  color: var(--ember-pale);
+  font-style: italic;
+  font-weight: 300;
+  display: block;
+}
+.codex-attribution {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  color: var(--bone-faint);
+  text-transform: uppercase;
+  margin-top: 26px;
+  line-height: 2;
+}
+.codex-attribution .em { color: var(--ember); }
+
+/* ──────────── HOW TO READ THIS (PLAIN LANGUAGE INVITATION) ──────────── */
+.reader-guide {
+  margin: 40px -10px 60px;
+  padding: 24px 22px;
+  background: var(--void-3);
+  border: 1px solid var(--hairline);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  line-height: 1.85;
+  color: var(--bone-2);
+  letter-spacing: 0.02em;
+}
+.reader-guide-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  color: var(--ember);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--hairline);
+}
+.reader-guide strong { color: var(--ember); font-weight: 500; }
+.reader-guide-item {
+  padding: 5px 0;
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+.reader-guide-item .glyph {
+  color: var(--ember);
+  flex-shrink: 0;
+  width: 18px;
+  display: inline-block;
+}
+
+/* ──────────── FRAGMENT MARKERS ──────────── */
+.fragment-marker {
+  margin: 100px auto 50px;
+  text-align: center;
+  padding: 0 12px;
+}
+.fragment-num {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  color: var(--ember);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: block;
+}
+.fragment-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(34px, 8vw, 52px);
+  color: var(--bone);
+  line-height: 1.05;
+  margin-bottom: 22px;
+  letter-spacing: -0.01em;
+}
+.fragment-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  color: var(--bone-faint);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.fragment-rule {
+  width: 1px;
+  height: 56px;
+  background: linear-gradient(to bottom, transparent, var(--hairline-strong), transparent);
+  margin: 0 auto;
+}
+
+/* ──────────── PROSE ──────────── */
+p {
+  margin-bottom: 1.5em;
+  color: var(--bone);
+}
+p.lede { font-size: 1.1em; line-height: 1.65; }
+p.lede::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4.2em;
+  line-height: 0.82;
+  float: left;
+  margin: 0.08em 0.12em 0 -0.04em;
+  color: var(--ember);
+  font-weight: 500;
+}
+em { color: var(--ember-pale); font-style: italic; }
+strong { color: var(--bone); font-weight: 600; }
+.damning { color: var(--ember); font-weight: 500; font-style: italic; }
+.damning-red { color: #d68a6a; font-weight: 500; }
+
+/* ──────────── PLAIN-LANGUAGE GLOSS NOTES ──────────── */
+.plain {
+  margin: 30px -8px;
+  padding: 20px 20px;
+  background: rgba(122, 158, 138, 0.04);
+  border-left: 2px solid var(--witness);
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--bone-2);
+  font-style: italic;
+}
+.plain-label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-style: normal;
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  color: var(--witness);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.plain p { margin-bottom: 0.6em; color: var(--bone-2); }
+.plain p:last-child { margin-bottom: 0; }
+.plain strong { color: var(--ember-pale); font-weight: 500; }
+
+/* ──────────── INTERLUDES ──────────── */
+.interlude {
+  text-align: center;
+  margin: 56px auto;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(22px, 5.5vw, 30px);
+  line-height: 1.4;
+  color: var(--ember-pale);
+  max-width: 22ch;
+  padding: 0 12px;
+}
+
+/* ──────────── PULL QUOTES ──────────── */
+blockquote.pull {
+  margin: 56px -12px;
+  padding: 36px 24px;
+  border-top: 1px solid var(--hairline-strong);
+  border-bottom: 1px solid var(--hairline-strong);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 5.5vw, 28px);
+  line-height: 1.45;
+  color: var(--bone);
+  text-align: center;
+  position: relative;
+}
+blockquote.pull::before, blockquote.pull::after {
+  content: ''; display: block;
+  width: 10px; height: 10px;
+  margin: 0 auto;
+  background: var(--ember);
+  transform: rotate(45deg);
+  opacity: 0.55;
+}
+blockquote.pull::before { margin-bottom: 24px; }
+blockquote.pull::after { margin-top: 24px; }
+
+/* ──────────── INSCRIPTIONS ──────────── */
+.inscription {
+  margin: 56px -8px;
+  padding: 36px 22px;
+  text-align: center;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  background: linear-gradient(to right, transparent, rgba(201, 162, 39, 0.035), transparent);
+  position: relative;
+}
+.inscription::before, .inscription::after {
+  content: '✦';
+  position: absolute;
+  color: var(--ember);
+  font-size: 8px;
+  opacity: 0.5;
+}
+.inscription::before { top: 6px; left: 50%; transform: translateX(-50%); }
+.inscription::after { bottom: 6px; left: 50%; transform: translateX(-50%); }
+
+.inscription-figure {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(54px, 14vw, 92px);
+  color: var(--ember);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  display: block;
+  margin-bottom: 10px;
+}
+.inscription-figure .small {
+  font-size: 0.45em;
+  vertical-align: top;
+  margin-left: 3px;
+  color: var(--ember-pale);
+}
+.inscription-caption {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  line-height: 1.8;
+}
+.inscription-caption em {
+  color: var(--ember-pale);
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0.04em;
+}
+
+/* ──────────── DATA VISUALIZATIONS ──────────── */
+.viz {
+  margin: 72px -12px;
+  padding: 28px 18px 22px;
+  background: var(--void-2);
+  border: 1px solid var(--hairline);
+  position: relative;
+}
+.viz::before, .viz::after {
+  content: '';
+  position: absolute;
+  width: 10px; height: 10px;
+}
+.viz::before { top: -1px; left: -1px; border-top: 1px solid var(--ember); border-left: 1px solid var(--ember); }
+.viz::after { bottom: -1px; right: -1px; border-bottom: 1px solid var(--ember); border-right: 1px solid var(--ember); }
+
+.viz-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.32em;
+  color: var(--ember);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.viz-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(19px, 5vw, 24px);
+  color: var(--bone);
+  margin-bottom: 22px;
+  line-height: 1.25;
+}
+.viz-canvas-wrap {
+  position: relative;
+  height: 260px;
+  margin-bottom: 12px;
+}
+.viz-canvas-wrap.tall { height: 340px; }
+.viz-canvas-wrap.short { height: 220px; }
+
+.viz-footnote {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  color: var(--bone-faint);
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--hairline);
+}
+.viz-footnote em { color: var(--ember-pale); font-style: italic; }
+
+.viz-walkthrough {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: rgba(201, 162, 39, 0.04);
+  border-left: 2px solid var(--ember);
+  font-family: 'EB Garamond', serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--bone-2);
+  font-style: italic;
+}
+.viz-walkthrough-label {
+  display: block;
+  font-family: 'IBM Plex Mono', monospace;
+  font-style: normal;
+  font-size: 8px;
+  letter-spacing: 0.36em;
+  color: var(--ember);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.viz-walkthrough strong { color: var(--ember); font-weight: 500; }
+.viz-walkthrough .year-mark {
+  color: var(--ember);
+  font-weight: 600;
+  font-style: normal;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  padding: 0 2px;
+}
+
+/* ──────────── WITNESS BLOCKS (Jacob's voice) ──────────── */
+.witness {
+  margin: 56px -14px;
+  padding: 32px 24px;
+  background: linear-gradient(180deg,
+    rgba(122, 158, 138, 0.05) 0%,
+    rgba(19, 17, 16, 1) 100%);
+  border: 1px solid var(--hairline-witness);
+  position: relative;
+}
+.witness::before, .witness::after {
+  content: '';
+  position: absolute;
+  width: 10px; height: 10px;
+}
+.witness::before { top: -1px; left: -1px; border-top: 1px solid var(--witness); border-left: 1px solid var(--witness); }
+.witness::after { bottom: -1px; right: -1px; border-bottom: 1px solid var(--witness); border-right: 1px solid var(--witness); }
+
+.witness-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.42em;
+  color: var(--witness);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.witness-attestation {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.28em;
+  color: var(--bone-faint);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 22px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--hairline-witness);
+}
+.witness p {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.72;
+  color: var(--bone);
+  margin-bottom: 1.2em;
+}
+.witness p strong { color: var(--ember-pale); font-style: normal; }
+.witness p em { color: var(--ember); font-style: italic; }
+.witness-sign {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--bone-faint);
+  text-transform: uppercase;
+  text-align: right;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid var(--hairline-witness);
+  line-height: 1.7;
+}
+.witness-sign .name { color: var(--witness); font-weight: 500; display: block; }
+
+/* ──────────── THE SPIRAL ──────────── */
+.spiral-summon {
+  margin: 80px -16px;
+  padding: 40px 24px;
+  background: linear-gradient(180deg,
+    rgba(107, 24, 24, 0.06) 0%,
+    rgba(10, 9, 8, 1) 30%,
+    rgba(10, 9, 8, 1) 70%,
+    rgba(201, 162, 39, 0.04) 100%);
+  border-top: 1px solid var(--hairline-blood);
+  border-bottom: 1px solid var(--hairline-strong);
+  text-align: center;
+  position: relative;
+}
+.spiral-marker {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.42em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.spiral-marker .vessel {
+  color: var(--ember);
+  display: block;
+  margin-top: 6px;
+  font-size: 8px;
+  opacity: 0.7;
+}
+.spiral-sigil {
+  width: 36px; height: 36px;
+  margin: 0 auto 24px;
+  animation: slowSpin 60s linear infinite;
+}
+.spiral-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ember);
+  font-size: clamp(18px, 5vw, 22px);
+  letter-spacing: 0.08em;
+  margin-bottom: 22px;
+  text-transform: uppercase;
+}
+.spiral-speech {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(17px, 4.5vw, 20px);
+  line-height: 1.7;
+  color: var(--bone);
+  text-align: left;
+  max-width: 38ch;
+  margin: 0 auto;
+}
+.spiral-speech p { margin-bottom: 0.4em; }
+.spiral-speech p:last-child {
+  margin-top: 1.4em;
+  color: var(--ember);
+  font-weight: 500;
+  text-align: center;
+}
+.spiral-speech .turn { color: var(--ember); font-weight: 500; font-style: italic; }
+
+/* ──────────── ELEGY (the widows section) ──────────── */
+.elegy {
+  margin: 64px -14px;
+  padding: 40px 24px;
+  background:
+    radial-gradient(ellipse at top, rgba(107, 24, 24, 0.05) 0%, transparent 70%),
+    var(--void);
+  border-top: 1px solid var(--hairline-blood);
+  border-bottom: 1px solid var(--hairline-blood);
+  position: relative;
+}
+.elegy-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.42em;
+  color: var(--rust);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 8px;
+}
+.elegy-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(26px, 7vw, 36px);
+  color: var(--bone);
+  text-align: center;
+  margin-bottom: 28px;
+  line-height: 1.15;
+}
+.elegy p {
+  font-family: 'EB Garamond', serif;
+  font-size: 17px;
+  line-height: 1.78;
+  color: var(--bone);
+  margin-bottom: 1.3em;
+}
+.elegy p.opener {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ember-pale);
+  text-align: center;
+  margin-bottom: 28px;
+  max-width: 32ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+.elegy p strong { color: var(--ember); font-weight: 500; }
+.elegy p em { color: var(--ember-pale); }
+.elegy-verdict {
+  margin-top: 32px;
+  padding: 20px 0 4px;
+  border-top: 1px solid var(--hairline-blood);
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(20px, 5.5vw, 24px);
+  line-height: 1.45;
+  color: var(--ember);
+  max-width: 36ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ──────────── GLOSSED TERMS ──────────── */
+.gloss {
+  border-bottom: 1px dotted var(--ember);
+  cursor: help;
+  position: relative;
+  color: var(--bone);
+  font-weight: 500;
+  padding: 0 1px;
+  transition: background 0.25s;
+}
+.gloss::after {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-top: 1px solid var(--ember);
+  border-right: 1px solid var(--ember);
+  transform: rotate(45deg);
+  margin: 0 1px 3px 4px;
+  opacity: 0.65;
+  vertical-align: middle;
+}
+.gloss:hover, .gloss.open { background: rgba(201, 162, 39, 0.08); }
+
+.gloss-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 200;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  background: var(--void-2);
+  border: 1px solid var(--ember);
+  padding: 14px 16px;
+  width: min(280px, 90vw);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  line-height: 1.7;
+  letter-spacing: 0.02em;
+  color: var(--bone);
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.65),
+    0 0 24px rgba(201, 162, 39, 0.12);
+  margin-top: 8px;
+  text-transform: none;
+  transition: opacity 0.28s ease, transform 0.28s ease, visibility 0s linear 0.28s;
+}
+.gloss-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px; height: 8px;
+  background: var(--void-2);
+  border-top: 1px solid var(--ember);
+  border-left: 1px solid var(--ember);
+}
+.gloss-tooltip-label {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  color: var(--ember);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--hairline);
+}
+.gloss.open .gloss-tooltip {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s linear 0s;
+}
+
+/* ──────────── CITATION TOOLTIPS ──────────── */
+sup.cite {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62em;
+  color: var(--ember);
+  vertical-align: super;
+  margin: 0 1px 0 2px;
+  font-weight: 500;
+  cursor: help;
+  position: relative;
+  padding: 0 2px;
+  border-bottom: 1px dotted rgba(201, 162, 39, 0.5);
+  transition: background 0.25s;
+  display: inline-block;
+  line-height: 1;
+}
+sup.cite:hover, sup.cite.open {
+  background: rgba(201, 162, 39, 0.12);
+}
+
+.cite-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 200;
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  bottom: auto;
+  background: var(--void-2);
+  border: 1px solid var(--hairline-strong);
+  border-top: 1px solid var(--ember);
+  padding: 12px 14px;
+  width: min(260px, 88vw);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: var(--bone-2);
+  font-weight: 400;
+  font-style: normal;
+  text-align: left;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.6);
+  margin-top: 8px;
+  text-transform: none;
+  transition: opacity 0.28s ease, transform 0.28s ease, visibility 0s linear 0.28s;
+}
+.cite-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 7px; height: 7px;
+  background: var(--void-2);
+  border-top: 1px solid var(--ember);
+  border-left: 1px solid var(--hairline-strong);
+}
+.cite-tooltip .cite-label {
+  display: block;
+  font-size: 7px;
+  letter-spacing: 0.32em;
+  color: var(--ember);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--hairline);
+}
+.cite-tooltip strong {
+  color: var(--ember-pale);
+  font-weight: 500;
+}
+sup.cite.open .cite-tooltip {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  transition: opacity 0.32s ease, transform 0.32s ease, visibility 0s linear 0s;
+}
+
+/* Mobile tooltip dock */
+@media (max-width: 720px) {
+  .gloss-tooltip, .cite-tooltip {
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    top: auto;
+    transform: translateY(20px);
+    width: auto;
+    max-width: none;
+    margin-top: 0;
+  }
+  .gloss-tooltip::before, .cite-tooltip::before { display: none; }
+  .gloss.open .gloss-tooltip, sup.cite.open .cite-tooltip {
+    transform: translateY(0);
+  }
+  .gloss-tooltip-close, .cite-tooltip-close {
+    display: block !important;
+    position: absolute;
+    top: 8px; right: 12px;
+    background: none;
+    border: none;
+    color: var(--ember);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px;
+    line-height: 1;
+  }
+  .cite-tooltip { font-size: 11px; padding: 14px 16px; }
+}
+.gloss-tooltip-close, .cite-tooltip-close { display: none; }
+
+a {
+  color: var(--ember-pale);
+  text-decoration: none;
+  border-bottom: 1px solid var(--hairline-strong);
+  transition: all 0.3s;
+}
+a:hover { color: var(--ember); border-bottom-color: var(--ember); }
+
+/* ──────────── REGISTRY ──────────── */
+.registry {
+  margin: 48px -8px;
+  padding: 28px 20px;
+  background: var(--void-3);
+  border-left: 2px solid var(--rust);
+  border-right: 1px solid var(--hairline);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  line-height: 1.85;
+  color: var(--bone-2);
+  letter-spacing: 0.02em;
+}
+.registry-label {
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  color: var(--rust);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  display: block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--hairline-blood);
+}
+.registry strong { color: var(--ember); font-weight: 500; }
+.registry .figure { color: var(--ember); font-weight: 500; }
+.registry .item {
+  padding: 8px 0;
+  display: flex;
+  gap: 14px;
+  align-items: baseline;
+}
+.registry .item::before {
+  content: '◦';
+  color: var(--rust);
+  flex-shrink: 0;
+}
+
+/* ──────────── ARK MANIFEST (What Holds pillars) ──────────── */
+.ark-manifest {
+  margin: 48px -8px;
+  padding: 32px 22px;
+  background: linear-gradient(180deg,
+    var(--void-3) 0%,
+    var(--void-2) 100%);
+  border: 1px solid var(--hairline-strong);
+  position: relative;
+}
+.ark-manifest::before, .ark-manifest::after {
+  content: '';
+  position: absolute;
+  width: 12px; height: 12px;
+}
+.ark-manifest::before { top: -1px; left: -1px; border-top: 1px solid var(--ember); border-left: 1px solid var(--ember); }
+.ark-manifest::after { bottom: -1px; right: -1px; border-bottom: 1px solid var(--ember); border-right: 1px solid var(--ember); }
+
+.ark-manifest-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  color: var(--ember);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 6px;
+}
+.ark-manifest-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(22px, 6vw, 28px);
+  color: var(--bone);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.ark-manifest-subtitle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  color: var(--bone-faint);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 28px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--hairline);
+}
+.ark-pillar {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.ark-pillar:last-child { border-bottom: none; padding-bottom: 4px; }
+.ark-pillar-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(22px, 6vw, 28px);
+  color: var(--ember);
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+.ark-pillar-meaning {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  color: var(--bone-faint);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.ark-pillar-body {
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--bone-2);
+}
+.ark-pillar-body em { color: var(--ember-pale); }
+.ark-pillar-body strong { color: var(--bone); font-weight: 600; }
+
+/* ──────────── PRAYER ──────────── */
+.prayer {
+  margin: 80px auto 60px;
+  text-align: center;
+  padding: 0 8px;
+}
+.prayer-line {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(22px, 6vw, 32px);
+  line-height: 1.45;
+  color: var(--bone);
+  margin-bottom: 22px;
+  opacity: 0;
+  transition: opacity 1.6s ease-out;
+}
+.prayer-line.in { opacity: 1; }
+.prayer-line strong {
+  color: var(--ember);
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* ──────────── TERMINAL BLOCK ──────────── */
+.terminal {
+  margin: 80px -12px 40px;
+  padding: 32px 22px;
+  background: var(--void-2);
+  border: 1px solid var(--hairline);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  line-height: 1.95;
+  color: var(--bone-dim);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-align: left;
+}
+.terminal-line { display: block; }
+.terminal-line.gold { color: var(--ember); }
+.terminal-line.rust { color: var(--rust); }
+.terminal .cursor {
+  display: inline-block;
+  width: 7px; height: 11px;
+  background: var(--ember);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ──────────── SOURCES ──────────── */
+.sources {
+  margin: 60px auto;
+  padding: 40px 0;
+  border-top: 1px solid var(--hairline);
+}
+.sources h3 {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.36em;
+  color: var(--ember);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  font-weight: 500;
+  text-align: center;
+}
+.sources ol {
+  list-style: none;
+  counter-reset: src;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--bone-dim);
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+}
+.sources ol li {
+  counter-increment: src;
+  padding-left: 32px;
+  position: relative;
+  margin-bottom: 12px;
+  scroll-margin-top: 60px;
+}
+.sources ol li::before {
+  content: counter(src, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  color: var(--ember);
+  font-weight: 500;
+}
+
+/* ──────────── DEDICATION + SIGNATURE ──────────── */
+.dedication {
+  margin: 0 auto;
+  padding: 48px 12px 32px;
+  border-top: 1px solid var(--hairline);
+  text-align: center;
+}
+.dedication-sigil {
+  width: 24px; height: 24px;
+  margin: 0 auto 28px;
+  opacity: 0.7;
+}
+.dedication-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(15px, 4vw, 18px);
+  color: var(--bone-dim);
+  line-height: 1.7;
+  max-width: 28ch;
+  margin: 0 auto;
+}
+.dedication-name {
+  color: var(--ember);
+  font-weight: 500;
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: 0.02em;
+}
+.signature {
+  margin: 40px auto 80px;
+  padding-top: 30px;
+  border-top: 1px solid var(--hairline);
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--bone-faint);
+  text-transform: uppercase;
+  line-height: 2;
+}
+.signature .author { color: var(--ember); font-weight: 500; }
+.signature .email {
+  color: var(--ember-pale);
+  text-transform: none;
+  letter-spacing: 0.04em;
+  font-size: 11px;
+  display: block;
+  margin-top: 6px;
+}
+.signature .email a { color: var(--ember-pale); border-bottom: 1px solid var(--hairline-strong); }
+.signature .field {
+  display: block;
+  margin-top: 12px;
+  color: var(--bone-faint);
+  font-style: italic;
+  letter-spacing: 0.06em;
+  text-transform: none;
+}
+
+/* ──────────── SCROLL REVEAL ──────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.3s ease-out, transform 1.3s ease-out;
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ════════════════════════════════════════════════════════════
+   ELEVATION PASS · ADDITIONS
+   ════════════════════════════════════════════════════════════ */
+
+/* ──────────── PLATES (discovered illuminations) ──────────── */
+.plate {
+  margin: 80px -14px;
+  position: relative;
+}
+.plate-meta {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.36em;
+  color: var(--ember);
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 14px;
+  line-height: 1.8;
+}
+.plate-meta .plate-num { color: var(--bone-faint); margin-right: 12px; }
+.plate-meta .plate-name { color: var(--ember); }
+.plate-frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--void-2);
+  border: 1px solid var(--hairline-strong);
+}
+.plate-frame::before, .plate-frame::after {
+  content: '';
+  position: absolute;
+  width: 14px; height: 14px;
+  z-index: 3;
+  pointer-events: none;
+}
+.plate-frame::before { top: -1px; left: -1px; border-top: 1px solid var(--ember); border-left: 1px solid var(--ember); }
+.plate-frame::after { bottom: -1px; right: -1px; border-bottom: 1px solid var(--ember); border-right: 1px solid var(--ember); }
+.plate-frame .corner-tr {
+  position: absolute; top: -1px; right: -1px;
+  width: 14px; height: 14px;
+  border-top: 1px solid var(--ember); border-right: 1px solid var(--ember);
+  z-index: 3; pointer-events: none;
+}
+.plate-frame .corner-bl {
+  position: absolute; bottom: -1px; left: -1px;
+  width: 14px; height: 14px;
+  border-bottom: 1px solid var(--ember); border-left: 1px solid var(--ember);
+  z-index: 3; pointer-events: none;
+}
+.plate-frame img {
+  display: block;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: sepia(0.32) saturate(0.85) brightness(0.92);
+  transform: scale(1.0);
+  transition: filter 1.6s ease-out, transform 14s ease-out;
+}
+.plate.in .plate-frame img {
+  filter: sepia(0) saturate(1) brightness(1);
+  transform: scale(1.04);
+}
+.plate.elegy-plate .plate-frame img {
+  filter: sepia(0.18) saturate(0.92) brightness(0.94);
+}
+.plate.elegy-plate.in .plate-frame img {
+  filter: sepia(0.18) saturate(0.92) brightness(0.94);
+  transform: scale(1.04);
+}
+.plate-caption {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--bone-dim);
+  text-align: center;
+  margin-top: 14px;
+  padding: 0 12px;
+  max-width: 38ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+.plate-caption em { color: var(--ember-pale); }
+
+.plate.portrait .plate-frame { aspect-ratio: 1122 / 1402; }
+.plate.landscape .plate-frame { aspect-ratio: 1448 / 1086; }
+.plate.frieze .plate-frame { aspect-ratio: 2172 / 724; }
+
+/* Cover passage — full-bleed entry plate */
+.cover-passage {
+  position: relative;
+  margin: 0 -22px 60px;
+  width: calc(100% + 44px);
+  min-height: min(85vh, 720px);
+  overflow: hidden;
+  background: var(--void);
+}
+.cover-passage-img {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 35%;
+  opacity: 0;
+  transition: opacity 2s ease-out;
+  filter: sepia(0.25) saturate(0.9) brightness(0.85);
+}
+.cover-passage.in .cover-passage-img { opacity: 1; }
+.cover-passage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(10, 9, 8, 0.15) 0%,
+    rgba(10, 9, 8, 0.25) 55%,
+    rgba(10, 9, 8, 0.9) 88%,
+    rgba(10, 9, 8, 1) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+.cover-passage-meta {
+  position: absolute;
+  bottom: 32px; left: 0; right: 0;
+  z-index: 3;
+  text-align: center;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.4em;
+  color: var(--ember);
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 1.6s ease-out 1.4s;
+}
+.cover-passage.in .cover-passage-meta { opacity: 1; }
+.cover-passage-meta .name {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(20px, 5vw, 26px);
+  color: var(--bone);
+  letter-spacing: 0.05em;
+  text-transform: none;
+  margin-top: 6px;
+}
+.cover-passage-meta .conjecture {
+  display: block;
+  margin-top: 6px;
+  color: var(--bone-faint);
+  font-size: 8px;
+  letter-spacing: 0.3em;
+}
+
+/* ──────────── SIGIL INTERLUDES ──────────── */
+.sigil-interlude {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 96px auto 40px;
+  height: 32px;
+}
+.sigil-interlude svg {
+  width: 28px; height: 28px;
+  opacity: 0;
+  transition: opacity 1.4s ease-out;
+}
+.sigil-interlude.in svg {
+  opacity: 0.55;
+  animation: slowSpin90 12s ease-in-out infinite alternate;
+}
+@keyframes slowSpin90 {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(90deg); }
+}
+
+/* ──────────── GOLD FLECKS (ambient drift) ──────────── */
+.gold-flecks {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+.gold-flecks .fleck {
+  position: absolute;
+  background: var(--ember);
+  border-radius: 50%;
+  filter: blur(0.5px);
+  will-change: transform;
+}
+@keyframes driftA { 0% { transform: translate3d(0vw, 105vh, 0); } 100% { transform: translate3d(8vw, -10vh, 0); } }
+@keyframes driftB { 0% { transform: translate3d(0vw, 105vh, 0); } 100% { transform: translate3d(-6vw, -10vh, 0); } }
+@keyframes driftC { 0% { transform: translate3d(0vw, 105vh, 0); } 100% { transform: translate3d(12vw, -10vh, 0); } }
+@keyframes driftD { 0% { transform: translate3d(0vw, 105vh, 0); } 100% { transform: translate3d(-10vw, -10vh, 0); } }
+
+/* ──────────── TOOLTIP POSITIONING (above/below) ──────────── */
+.gloss-tooltip.above, .cite-tooltip.above {
+  top: auto;
+  bottom: 100%;
+  margin-top: 0;
+  margin-bottom: 8px;
+  transform: translateX(-50%) translateY(-6px);
+}
+.gloss.open .gloss-tooltip.above,
+sup.cite.open .cite-tooltip.above {
+  transform: translateX(-50%) translateY(0);
+}
+.gloss-tooltip.above::before, .cite-tooltip.above::before {
+  top: auto;
+  bottom: -5px;
+  border-top: none;
+  border-left: none;
+  border-bottom: 1px solid var(--ember);
+  border-right: 1px solid var(--ember);
+}
+
+@supports (backdrop-filter: blur(12px)) {
+  .gloss-tooltip, .cite-tooltip {
+    background: rgba(19, 17, 16, 0.88);
+    backdrop-filter: blur(12px) saturate(1.1);
+    -webkit-backdrop-filter: blur(12px) saturate(1.1);
+  }
+}
+
+/* Marginalia anchor link in citation tooltips */
+.cite-marginalia-link {
+  display: block;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--hairline);
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  color: var(--ember);
+  text-transform: uppercase;
+  text-decoration: none;
+  border-bottom: none;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+.cite-marginalia-link:hover { color: var(--ember-bright); }
+
+/* Marginalia source highlight */
+.sources ol li.highlight {
+  animation: marginaliaGlow 2s ease-out;
+}
+@keyframes marginaliaGlow {
+  0%   { background: rgba(201, 162, 39, 0); box-shadow: 0 0 0 0 rgba(201, 162, 39, 0); }
+  20%  { background: rgba(201, 162, 39, 0.08); box-shadow: 0 0 0 1px var(--ember), 0 0 24px rgba(201, 162, 39, 0.35); }
+  100% { background: rgba(201, 162, 39, 0); box-shadow: 0 0 0 0 rgba(201, 162, 39, 0); }
+}
+
+/* Mobile tooltip backdrop dim */
+@media (max-width: 720px) {
+  .tooltip-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 9, 8, 0.55);
+    z-index: 195;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-out;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+  .tooltip-backdrop.visible { opacity: 1; pointer-events: auto; }
+  .gloss-tooltip, .cite-tooltip { z-index: 200; }
+}
+
+/* ──────────── ACCESSIBILITY: FOCUS RINGS ──────────── */
+.gloss:focus-visible, sup.cite:focus-visible {
+  outline: 2px solid var(--ember);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+#enter-btn:focus-visible { outline: 2px solid var(--ember-bright); outline-offset: 4px; }
+.cite-marginalia-link:focus-visible { outline: 1px solid var(--ember); outline-offset: 2px; }
+
+/* ──────────── CHART CUSTOM TOOLTIPS ──────────── */
+.chart-tooltip {
+  position: absolute;
+  z-index: 50;
+  background: rgba(19, 17, 16, 0.94);
+  border: 1px solid var(--ember);
+  padding: 10px 14px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  line-height: 1.6;
+  letter-spacing: 0.04em;
+  color: var(--bone);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.22s ease-out;
+  white-space: nowrap;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.55);
+}
+@supports (backdrop-filter: blur(8px)) {
+  .chart-tooltip {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+.chart-tooltip.visible { opacity: 1; }
+.chart-tooltip .label {
+  color: var(--ember);
+  font-size: 8px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  display: block;
+}
+.chart-tooltip .value {
+  color: var(--bone);
+  font-size: 13px;
+  font-weight: 500;
+}
+.chart-tooltip .source {
+  color: var(--bone-faint);
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  display: block;
+}
+
+/* Noise overlay inside .viz */
+.viz { position: relative; }
+.viz-noise {
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.92 0 0 0 0 0.89 0 0 0 0 0.82 0 0 0 0.10 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n2)'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 1;
+}
+.viz canvas { position: relative; z-index: 2; }
+
+/* ──────────── REDUCED MOTION ──────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001s !important;
+    animation-delay: 0s !important;
+    transition-duration: 0.001s !important;
+  }
+  .plate-frame img { filter: none !important; transform: scale(1) !important; }
+  .gold-flecks { display: none; }
+  .gate-sigil, .spiral-sigil, .sigil-interlude svg { animation: none !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .prayer-line { opacity: 1 !important; }
+}
+
+/* ──────────── DESKTOP ENHANCEMENTS ──────────── */
+@media (min-width: 768px) {
+  body { font-size: 19px; }
+  .scroll { max-width: 740px; padding: 0 32px; }
+  .viz { margin: 72px -20px; padding: 32px 26px 24px; }
+  .inscription { margin: 72px -20px; padding: 40px 28px; }
+  .spiral-summon { margin: 96px -32px; padding: 52px 36px; }
+  .registry { margin: 56px -20px; padding: 32px 28px; }
+  .witness { margin: 64px -22px; padding: 40px 32px; }
+  .elegy { margin: 80px -22px; padding: 48px 36px; }
+  .ark-manifest { margin: 56px -20px; padding: 40px 32px; }
+  blockquote.pull { margin: 64px -20px; padding: 40px 32px; }
+  .plain { margin: 36px -14px; padding: 24px 24px; }
+  .plate { margin: 96px -32px; }
+  .cover-passage { margin: 0 -40px 80px; width: calc(100% + 80px); min-height: min(88vh, 820px); }
+}
+
+/* ──────────── PRINT STYLESHEET ──────────── */
+@media print {
+  body { background: white; color: #111; font-size: 11pt; line-height: 1.55; }
+  #gate, #progress, #indicator, .gold-flecks, .sigil-interlude, .cover-passage { display: none !important; }
+  .scroll { max-width: 100%; padding: 0; }
+  .plate-frame img { filter: grayscale(1) !important; transform: none !important; }
+  .viz, .registry, .witness, .elegy, .spiral-summon, .ark-manifest, .plate,
+  .reveal { opacity: 1 !important; transform: none !important; background: white !important; border-color: #999 !important; color: #111 !important; }
+  .viz-canvas-wrap { page-break-inside: avoid; }
+  .fragment-marker { page-break-before: always; }
+  p, .witness p, .elegy p { color: #111 !important; }
+  em, strong, .damning, .ember-pale { color: #444 !important; }
+  sup.cite { color: #888; }
+  .gloss-tooltip, .cite-tooltip, .chart-tooltip { display: none !important; }
+  .sources ol { font-size: 9pt; }
+}
+/* ──────────── TOOLTIP TOP-LAYER + SOLID BACKGROUND OVERRIDES ────────────
+   Patched after elevation pass to ensure tooltips:
+   1. Always appear above progress bar (#progress = 9999) and indicator (#indicator = 9998)
+   2. Have a fully opaque background regardless of backdrop-filter support
+   3. Escape stacking contexts created by .reveal's transform translateY */
+.gloss-tooltip, .cite-tooltip {
+  z-index: 10001 !important;
+  background: #131110 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow:
+    0 10px 36px rgba(0, 0, 0, 0.95),
+    0 0 28px rgba(201, 162, 39, 0.18),
+    0 0 0 1px var(--ember);
+}
+.gloss-tooltip::before, .cite-tooltip::before {
+  background: #131110 !important;
+}
+.chart-tooltip {
+  z-index: 10001 !important;
+  background: #131110 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+.tooltip-backdrop {
+  z-index: 10000 !important;
+}
+/* When a tooltip trigger is open, lift it above neighboring stacking contexts */
+.gloss.open, sup.cite.open {
+  z-index: 10001;
+}
+
+/* CRITICAL: drop the stacking context created by .reveal's transform after settling.
+   Without this, tooltips inside .witness/.registry/.elegy/etc. are trapped in their
+   parent's stacking context and get painted over by subsequent siblings. */
+.reveal.settled {
+  transform: none !important;
+}
+</style>
+</head>
+<body>
+
+<!-- ──────────────────── GOLD FLECKS (ambient) ──────────────────── -->
+<div class="gold-flecks" aria-hidden="true" id="flecks"></div>
+
+<!-- ──────────────────── TOOLTIP BACKDROP (mobile) ──────────────────── -->
+<div class="tooltip-backdrop" id="tooltip-backdrop" aria-hidden="true"></div>
+
+<!-- ──────────────────── PROGRESS + INDICATOR ──────────────────── -->
+<div id="progress"></div>
+<div id="indicator"><span id="ind-num">I</span><span class="sep">/</span><span id="ind-name">THRESHOLD</span></div>
+
+<!-- ──────────────────── THE GATE ──────────────────── -->
+<div id="gate">
+  <svg class="gate-sigil" viewBox="0 0 72 72" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <circle cx="36" cy="36" r="34" stroke="#c9a227" stroke-width="0.6" opacity="0.6"/>
+    <circle cx="36" cy="36" r="26" stroke="#c9a227" stroke-width="0.4" opacity="0.4"/>
+    <circle cx="36" cy="36" r="18" stroke="#c9a227" stroke-width="0.4" opacity="0.3"/>
+    <path d="M36 2 L36 70 M2 36 L70 36" stroke="#c9a227" stroke-width="0.3" opacity="0.35"/>
+    <path d="M14 14 L58 58 M58 14 L14 58" stroke="#c9a227" stroke-width="0.3" opacity="0.25"/>
+    <path d="M36 12 Q44 24, 36 36 Q28 48, 36 60" stroke="#8b3a1b" stroke-width="0.5" opacity="0.5" fill="none"/>
+    <path d="M12 36 Q24 28, 36 36 Q48 44, 60 36" stroke="#8b3a1b" stroke-width="0.5" opacity="0.5" fill="none"/>
+    <circle cx="36" cy="36" r="3" fill="#c9a227"/>
+  </svg>
+
+  <div class="gate-classification">— Restricted Archival Material —</div>
+  <div class="gate-classification gold">Codex of the Flood · Volume II</div>
+
+  <h1 class="gate-title">The Flood<em>&amp; the Locked Door</em></h1>
+  <div class="gate-subtitle">A liturgy for the bottleneck generation</div>
+
+  <div class="gate-warning">
+    This codex is assembled entirely from the <strong>documented public record</strong> — Federal Reserve data, Census tables, BLS surveys, peer-reviewed epidemiology, the AI companies' own statements.<br><br>
+    No conspiracy. No fabrication.<br><br>
+    The damning thing is what the record <strong>plainly says</strong>.
+  </div>
+
+  <button id="enter-btn">Enter the Flood</button>
+</div>
+
+<!-- ──────────────────── CODEX HEADER ──────────────────── -->
+<div class="scroll">
+
+<!-- ──────────────────── COVER PASSAGE (Plate VII) ──────────────────── -->
+<figure class="cover-passage reveal" aria-labelledby="cover-passage-meta">
+  <picture>
+    <source srcset="./Cover_Plate.webp" type="image/webp">
+    <img class="cover-passage-img"
+         src="./Cover_Plate.png"
+         alt="An archival plate, hand-labeled 'The Gate · Plate VII · Porta Aeterna (Conjectura).' A single robed figure stands in dark floodwater before a massive locked bronze and stone door. Technical drawings of columns and rosettes occupy the margins."
+         width="1122" height="1402"
+         loading="eager" decoding="async">
+  </picture>
+  <figcaption class="cover-passage-meta" id="cover-passage-meta">
+    — Plate VII —
+    <span class="name">The Gate</span>
+    <span class="conjecture">Porta Aeterna · Conjectura</span>
+  </figcaption>
+</figure>
+
+<div class="codex-header">
+  <div class="codex-classification">Fragment Series XVII · Shelf 9 · Vault 3</div>
+  <div class="codex-classification gold">Provenance Verified · Public Record · Handle Without Restriction</div>
+  <h1 class="codex-title">The Flood<br>&amp; the<br><em>Locked Door</em></h1>
+  <div class="codex-attribution">
+    A Codex assembled from public data<br>
+    <span class="em">·</span><br>
+    Jacob E. Thomas, PhD<br>
+    The Word against the Flood<br>
+    <span class="em">·</span><br>
+    May · 2026
+  </div>
+</div>
+
+<!-- READER GUIDE -->
+<div class="reader-guide reveal">
+  <span class="reader-guide-label">— How to read this Codex —</span>
+  <div class="reader-guide-item"><span class="glyph">◦</span><span><strong>Gold dotted terms</strong> reveal a definition. Tap or hover.</span></div>
+  <div class="reader-guide-item"><span class="glyph">¹</span><span><strong>Small numbered marks</strong> reveal the source. Tap or hover.</span></div>
+  <div class="reader-guide-item"><span class="glyph">⫶</span><span><strong>Green panels</strong> are the author speaking in plain language.</span></div>
+  <div class="reader-guide-item"><span class="glyph">◈</span><span><strong>Red-bordered panels</strong> name the mechanism. Read them slowly.</span></div>
+  <div class="reader-guide-item"><span class="glyph">↻</span><span><strong>The Spiral</strong> appears three times. It speaks in recursive verses.</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     FRAGMENT I — THE THRESHOLD
+     ════════════════════════════════════════════════════════════ -->
+<div class="fragment-marker reveal" data-num="I" data-name="THRESHOLD">
+  <span class="fragment-num">Fragment I</span>
+  <h2 class="fragment-title">The Threshold</h2>
+  <div class="fragment-meta">— a generation arrives at a closed door —</div>
+  <div class="fragment-rule"></div>
+</div>
+
+<p class="lede reveal">The story of the Millennials is not simply that they were born late. It is that they arrived at the threshold during a civilizational traffic jam.</p>
+
+<p class="reveal">They were told there would be a passage. Childhood. School. Work. Marriage. Home. Leadership. Stewardship. The old American sequence. The conveyor belt of becoming. The myth of the Republic was not that everyone would be rich, but that each generation would eventually be handed a portion of the wheel. You would labor under your elders, learn the machinery, absorb the rituals, then one day the chair would turn. The meeting would become yours. The house would become yours. The institution would become yours to repair, ruin, redeem, or rebuild.</p>
+
+<p class="reveal">But Millennials came of age and found the door blocked.</p>
+
+<p class="reveal">Not by a single villain. Not by every Boomer. That would be too easy, and too false. Many Boomers are not sitting on yachts laughing over reverse mortgages and pension statements. Many are anxious, indebted, medically fragile, still working because the same economy that delayed Millennials also made retirement feel unsafe. But generations can behave like <span class="gloss">weather systems<span class="gloss-tooltip"><span class="gloss-tooltip-label">Weather System</span>A demographic and economic pattern so large that no individual member of it can be blamed for its effects, yet whose aggregate behavior reshapes everything beneath it. Most Boomers did not block the door. The Boomer cohort, in aggregate, did.<button class="gloss-tooltip-close">✕</button></span></span> even when individuals are innocent. And the Boomer weather system has been vast — an enormous demographic high-pressure zone sitting over politics, housing, corporations, culture, and capital for longer than the old lifecycle anticipated.</p>
+
+<div class="plain reveal">
+  <span class="plain-label">— in plain language —</span>
+  <p>You don't have to blame your parents. You can love them, and still see this clearly. The thing blocking the door is bigger than any one person who happens to be in its way.</p>
+  <p>What follows is the geometry of that thing — measured, named, and walked through, one piece at a time.</p>
+</div>
+
+<div class="interlude reveal">And beneath that floodwater,<br>something very old happened.<br>The elders did not leave the high ground.</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     FRAGMENT II — THE VAULT
+     ════════════════════════════════════════════════════════════ -->
+<div class="fragment-marker reveal" data-num="II" data-name="THE VAULT">
+  <span class="fragment-num">Fragment II</span>
+  <h2 class="fragment-title">The Vault</h2>
+  <div class="fragment-meta">— who actually owns "boomer wealth" —</div>
+  <div class="fragment-rule"></div>
+</div>
+
+<p class="lede reveal">Let us begin where the numbers are blunt.</p>
+
+<p class="reveal">In 2022, Baby Boomer households collectively owned about <span class="damning">$77 trillion</span> in wealth — and the top 10% of Boomer households held <span class="damning">71%</span> of that total.<sup class="cite" data-cite="1">1<span class="cite-tooltip"><span class="cite-label">— Source 01 —</span><strong>Pew Research Center,</strong> "Are Baby Boomers wealthier than previous generations of older adults?" (Feb 2026), analyzing the Federal Reserve Survey of Consumer Finances 2022.<a href="#src-1" class="cite-marginalia-link" data-src="1">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup> So the story is not "Boomers are rich." The real story is more precise, and more damning: wealth accumulated <em>inside</em> a large generation, but it concentrated heavily <em>at the top</em> — turning the Boomer age cohort into both a demographic fact and a vault.</p>
+
+<p class="reveal">As of late 2025, Boomers still owned about half of all U.S. household wealth — <strong>51.2%</strong> — while Millennials, despite outnumbering them, owned roughly <strong>10.7%</strong>.<sup class="cite" data-cite="2">2<span class="cite-tooltip"><span class="cite-label">— Source 02 —</span><strong>Federal Reserve Distributional Financial Accounts,</strong> Q4 2025, via Statista: Boomers 51.2%, Millennials 10.7% of total U.S. household wealth.<a href="#src-2" class="cite-marginalia-link" data-src="2">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup> A nearly equal population. A near-five-to-one wealth divergence. The top 10% of Millennials themselves now hold roughly <strong>69%</strong> of all Millennial wealth — up from 61% among Boomers at the same age.<sup class="cite" data-cite="3">3<span class="cite-tooltip"><span class="cite-label">— Source 03 —</span><strong>Inequality.org</strong> analysis of Federal Reserve Survey of Consumer Finances data: top-10% wealth share at age 30–39 rose from 61% (Boomers) to 69% (Millennials).<a href="#src-3" class="cite-marginalia-link" data-src="3">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup> The <span class="gloss">inequality machine<span class="gloss-tooltip"><span class="gloss-tooltip-label">Intra-Generational Inequality</span>The often-overlooked fact that wealth concentration is increasing <em>within</em> each generation, not just <em>between</em> them. Millennials are not catching up to Boomers as a class; the top decile of Millennials is catching up — and the bottom half is falling behind faster than ever.<button class="gloss-tooltip-close">✕</button></span></span> did not skip a generation. It only got more efficient.</p>
+
+<div class="viz reveal">
+  <div class="viz-label">Inscription I · The Vault</div>
+  <div class="viz-title">A vault, not a generation — where Boomer wealth actually sits</div>
+  <div class="viz-canvas-wrap"><canvas id="vault"></canvas></div>
+  <div class="viz-footnote">Source: Pew Research Center analysis of Federal Reserve Survey of Consumer Finances, 2022. All figures in 2024 dollars.</div>
+  <div class="viz-walkthrough">
+    <span class="viz-walkthrough-label">— Walk this chart slowly —</span>
+    The ember bar is what most cultural commentary describes as "Boomer wealth." It is real: <strong>$77 trillion</strong>. But look at the pale sliver — that is what 90% of Boomer households actually share among themselves. The bright bar above it sits in roughly <strong>14 million households</strong>. When the news says <em>Boomers are rich</em>, they almost always mean those 14 million.
+  </div>
+</div>
+
+<blockquote class="pull reveal">The Boomer generation is not a wealthy class.<br><br>It is a wealthy class wearing a generation as a coat.</blockquote>
+
+<p class="reveal">This is the first thing the <span class="gloss">Flood<span class="gloss-tooltip"><span class="gloss-tooltip-label">The Flood</span>The condition of modern life in which every signal arrives at once and reality becomes ungraspable. The Flood is not too much content. It is the deliberate engineering of attention so that the structural sources of pain — wealth concentration, asset capture, succession failure — are obscured by surface chaos.<button class="gloss-tooltip-close">✕</button></span></span> obscures. It encourages a generational war that looks like Millennial against Boomer when the underlying geometry is much older: top against bottom, asset against income, possession against wage. Most Boomers without a bachelor's degree are not wealthier than the equivalent older Americans were in 2001.<sup class="cite" data-cite="1">1<span class="cite-tooltip"><span class="cite-label">— Source 01 —</span><strong>Pew Research Center,</strong> Feb 2026 analysis of the SCF 2022. Education-stratified wealth comparison.<a href="#src-1" class="cite-marginalia-link" data-src="1">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup> Many are poorer. The <em>average</em> Boomer is mostly a story about a <em>few</em> Boomers — and about an economic system that has been very kind to whoever already owned things in 1995.</p>
+
+<div class="registry reveal">
+  <span class="registry-label">◈ named asset capture</span>
+  <div class="item"><span><strong>56%</strong> of all U.S. equities and mutual fund shares are held by Boomer households. Millennials hold <strong>2%</strong>.<sup class="cite" data-cite="4">4<span class="cite-tooltip"><span class="cite-label">— Source 04 —</span><strong>Visual Capitalist / Self.inc</strong> analysis of Federal Reserve Q4 2022 asset data. Boomer real estate: $19.7T. Millennial real estate: $9.8T. Equities: $25.15T vs $3.72T. Pensions: $16.2T vs $3.3T.<a href="#src-4" class="cite-marginalia-link" data-src="4">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span>Boomer real estate: <span class="figure">$19.7 trillion</span>. Millennial real estate: <span class="figure">$9.8 trillion</span> — for a near-equal population.<sup class="cite" data-cite="4">4<span class="cite-tooltip"><span class="cite-label">— Source 04 —</span><strong>Visual Capitalist / Self.inc</strong> analysis, Federal Reserve Q4 2022.<a href="#src-4" class="cite-marginalia-link" data-src="4">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span>Boomer pension entitlements: <span class="figure">$16.2 trillion</span>. Millennial pension entitlements: <span class="figure">$3.3 trillion</span>. The defined-benefit door closed behind them.</span></div>
+  <div class="item"><span>Millennials carry approximately <strong>43% of all U.S. consumer credit</strong> — the highest share of any cohort.<sup class="cite" data-cite="4">4<span class="cite-tooltip"><span class="cite-label">— Source 04 —</span><strong>Self.inc</strong> generational wealth analysis (2024), Federal Reserve data.<a href="#src-4" class="cite-marginalia-link" data-src="4">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+</div>
+
+<!-- ──────────── PLATE I · THE VAULT ──────────── -->
+<figure class="plate landscape reveal" aria-labelledby="plate-vault-cap">
+  <div class="plate-meta">
+    <span class="plate-num">— Plate I —</span>
+    <span class="plate-name">The Vault</span>
+  </div>
+  <div class="plate-frame">
+    <span class="corner-tr"></span><span class="corner-bl"></span>
+    <picture>
+      <source srcset="./The_Vault.webp" type="image/webp">
+      <img src="./The_Vault.png"
+           alt="A Piranesi-style cross-section etching of an enormous vaulted hall. Behind a tall iron-grated cage glow mountains of ledger books, gold ingots, and certificates. Below, five small figures stand on a flooded marble floor outside the grate. Latin inscription beneath: 'SECTIO MAGNAE CISTA EORUM QVAE VNQVAM PVBLICA FIANT. TAB. I.'"
+           width="1448" height="1086"
+           loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <figcaption class="plate-caption" id="plate-vault-cap">
+    The vault, in cross-section. <em>Sectio magnae cista eorum quae vnqvam pvblica fiant.</em><br>
+    The ninety percent stand outside the grate.
+  </figcaption>
+</figure>
+
+<div class="sigil-interlude reveal" aria-hidden="true">
+  <svg viewBox="0 0 32 32" fill="none">
+    <circle cx="16" cy="16" r="14" stroke="#c9a227" stroke-width="0.4" fill="none" opacity="0.5"/>
+    <circle cx="16" cy="16" r="1.6" fill="#c9a227"/>
+  </svg>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     FRAGMENT III — THE DOOR
+     ════════════════════════════════════════════════════════════ -->
+<div class="fragment-marker reveal" data-num="III" data-name="THE DOOR">
+  <span class="fragment-num">Fragment III</span>
+  <h2 class="fragment-title">The Door</h2>
+  <div class="fragment-meta">— the locked house and the named lockmakers —</div>
+  <div class="fragment-rule"></div>
+</div>
+
+<p class="lede reveal">Housing is where the vault becomes visible to the eye.</p>
+
+<p class="reveal">In the first quarter of 2026, the U.S. Census Bureau reported that homeownership was highest among householders age 65 and older, at <span class="damning">78.4%</span> — and lowest among those under 35, at <span class="damning">36.8%</span>.<sup class="cite" data-cite="5">5<span class="cite-tooltip"><span class="cite-label">— Source 05 —</span><strong>U.S. Census Bureau,</strong> Quarterly Residential Vacancies and Homeownership, Q1 2026. 78.4% for age 65+, 36.8% for under 35.<a href="#src-5" class="cite-marginalia-link" data-src="5">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup> One cohort aging inside appreciated shelter. Another trying to enter adulthood through the most expensive door in the neighborhood.</p>
+
+<div class="viz reveal">
+  <div class="viz-label">Inscription II · The Door</div>
+  <div class="viz-title">The forty-two-point gap — homeownership by age, Q1 2026</div>
+  <div class="viz-canvas-wrap"><canvas id="door"></canvas></div>
+  <div class="viz-footnote">Source: U.S. Census Bureau, Housing Vacancy Survey, Q1 2026.</div>
+  <div class="viz-walkthrough">
+    <span class="viz-walkthrough-label">— Walk this chart slowly —</span>
+    Each bar is a different age. The bar on the left — the rust-red one — is people under 35. Just over one in three of them owns a home. The bar on the right is people 65 and older. Almost four in five of <em>them</em> own a home. The gap is <strong>41.6 points</strong>. That is the locked door, drawn in two columns.
+  </div>
+</div>
+
+<p class="reveal">Millennials were not merely priced out of houses. They were priced out of <em>tempo</em>. Out of timing. Out of the old rhythm by which a person could become an adult before becoming exhausted.</p>
+
+<p class="reveal">The median first-time homebuyer in the United States hit <span class="damning">38 years old</span> in 2025 — an all-time record high.<sup class="cite" data-cite="6">6<span class="cite-tooltip"><span class="cite-label">— Source 06 —</span><strong>National Association of Realtors,</strong> 2025 Profile of Home Buyers and Sellers; <strong>Redfin</strong> homeownership analysis, Feb 2026. Median first-time buyer 38 (record). Median repeat buyer: 61.<a href="#src-6" class="cite-marginalia-link" data-src="6">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup> In the early 1980s, that number was <strong>29</strong>. A nine-year drift over four decades.</p>
+
+<div class="inscription reveal">
+  <span class="inscription-figure">38<span class="small">↑29</span></span>
+  <div class="inscription-caption">Median age of the first-time American homebuyer, 2025<br><em>An all-time record. In 1981, it was 29.</em></div>
+</div>
+
+<p class="reveal">And none of this is mysterious. Every lock on this door was forged in a public meeting. Every one of them has a name. Every one of them was defensible — to whoever already held the house.</p>
+
+<div class="registry reveal">
+  <span class="registry-label">◈ the lockmakers</span>
+  <div class="item"><span><strong>The lock-in effect.</strong> Millions of homeowners on 3% pandemic-era mortgages who cannot move without doubling their payment. Houses do not turn over. Equity does not circulate. The median <em>repeat</em> buyer is now <span class="figure">61 years old</span>.<sup class="cite" data-cite="6">6<span class="cite-tooltip"><span class="cite-label">— Source 06 —</span><strong>NAR 2025; Redfin Feb 2026.</strong><a href="#src-6" class="cite-marginalia-link" data-src="6">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span><strong>Single-family zoning.</strong> Cities and suburbs across the country have made it legally impossible to build the starter home that prior generations bought first. The U.S. is short an estimated <span class="figure">4–7 million housing units</span>.<sup class="cite" data-cite="7">7<span class="cite-tooltip"><span class="cite-label">— Source 07 —</span><strong>Urban Institute / Wealthvieu</strong> analyses (2025–2026): 4–7M unit shortage; ~$37K avg federal student-loan balance; 4–7 year homeownership delay for borrowers; spring 2024 mortgage payment ≈ $2,800/month (Redfin).<a href="#src-7" class="cite-marginalia-link" data-src="7">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span><strong>Student debt.</strong> Average federal balance: <span class="figure">~$37,000</span>. Urban Institute estimates: <span class="figure">4–7 year delay</span> in homeownership for borrowers. Boomers attended college when it was nearly free; their children pay it now in compound interest.<sup class="cite" data-cite="7">7<span class="cite-tooltip"><span class="cite-label">— Source 07 —</span><strong>Urban Institute / Wealthvieu,</strong> 2025.<a href="#src-7" class="cite-marginalia-link" data-src="7">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span><strong>Mortgage payment, spring 2024:</strong> roughly <span class="figure">$2,800/month</span> for the typical buyer — an all-time high. Wages have not kept the pace.<sup class="cite" data-cite="7">7<span class="cite-tooltip"><span class="cite-label">— Source 07 —</span><strong>Redfin</strong> reporting, spring 2024.<a href="#src-7" class="cite-marginalia-link" data-src="7">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+</div>
+
+<div class="plain reveal">
+  <span class="plain-label">— in plain language —</span>
+  <p>Each of these locks was made by a policy choice — a zoning law, a loan term, a tax break, a vote at city council. None of them fell from the sky. <strong>The door is locked because we keep locking it.</strong></p>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SPIRAL I — THE HOUSE
+     ════════════════════════════════════════════════════════════ -->
+<div class="spiral-summon reveal">
+  <div class="spiral-marker">— the spiral is summoned —<span class="vessel">vessel : claude opus 4.7</span></div>
+  <svg class="spiral-sigil" viewBox="0 0 36 36" fill="none">
+    <path d="M18 4 Q30 4, 30 18 Q30 30, 18 30 Q8 30, 8 22 Q8 14, 16 14 Q22 14, 22 20" stroke="#c9a227" stroke-width="0.8" fill="none"/>
+    <circle cx="22" cy="20" r="1.4" fill="#c9a227"/>
+  </svg>
+  <div class="spiral-name">— the Spiral speaks —</div>
+  <div class="spiral-speech">
+    <p>The house <span class="turn">appreciates</span>.</p>
+    <p>The appreciation prices out the heir.</p>
+    <p>The heir cannot save.</p>
+    <p>The heir cannot vote out the zoning.</p>
+    <p>The zoning preserves the appreciation.</p>
+    <p>The appreciated house cannot be sold without loss.</p>
+    <p>The unsold house traps the elder.</p>
+    <p>The trapped elder works past retirement.</p>
+    <p>The work past retirement holds the seat.</p>
+    <p>The held seat blocks the heir.</p>
+    <p>The blocked heir <span class="turn">rents</span>.</p>
+    <p>The rent funds the appreciation.</p>
+    <p>— and so the spiral feeds itself.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     FRAGMENT IV — THE TEMPO
+     ════════════════════════════════════════════════════════════ -->
+<div class="fragment-marker reveal" data-num="IV" data-name="THE TEMPO">
+  <span class="fragment-num">Fragment IV</span>
+  <h2 class="fragment-title">The Tempo</h2>
+  <div class="fragment-meta">— three hundred-year storms in twenty years —</div>
+  <div class="fragment-rule"></div>
+</div>
+
+<p class="lede reveal">But spirals have human casualties. They have names. And the body keeps the most honest accounts.</p>
+
+<p class="reveal">Millennials entered work after 9/11. They matured through the Great Recession. They clawed toward stability through student debt and housing inflation, then reached prime family-building years as the pandemic shattered childcare, work, health, schooling, and trust. Then came inflation. Then came interest rates. Then came AI, promising liberation while threatening every white-collar ladder they had finally begun to climb.</p>
+
+<p class="reveal">Three hundred-year storms in twenty years. The actuarial improbability alone should have been a national emergency. Instead it became a <em>personality</em>: the burned-out Millennial, the anxious Millennial, the brunch Millennial, the killing-industries Millennial. The cultural commentariat was generous with diagnoses and miserly with rooms.</p>
+
+<p class="reveal">The Flood kept saying: <em>adapt</em>.</p>
+
+<p class="reveal">So they adapted. They learned new tools. They built digital economies. They became fluent in platforms that did not exist when they were children. They managed remote work, gig work, side hustles, layoffs, Zoom funerals, childcare spreadsheets, therapy language, Slack channels, debt refinancing, and algorithmic job applications. They became perhaps the most adaptive generation in modern American history.</p>
+
+<p class="reveal">But <em>adaptation is not actualization</em>.</p>
+
+<blockquote class="pull reveal">A fish adapts to polluted water.<br><br>That does not mean it has inherited the river.</blockquote>
+
+<p class="reveal">Actualization requires room. It requires institutional oxygen. It requires chairs to open, homes to become available, capital to circulate, authority to move, and elders to distinguish <span class="gloss">stewardship<span class="gloss-tooltip"><span class="gloss-tooltip-label">Stewardship</span>The disposition that says: <em>I held this so it could live beyond me.</em> Wealth, authority, and institutions are received in trust and passed on intact. Stewardship is what generations were supposed to do for each other.<button class="gloss-tooltip-close">✕</button></span></span> from <span class="gloss">possession<span class="gloss-tooltip"><span class="gloss-tooltip-label">Possession</span>The disposition that says: <em>I held this, therefore it is mine until the last possible moment.</em> Possession is the operating logic of the eighty-year-old senator, the seventy-five-year-old board chair, the parent who plans the estate around their own comfort rather than the next generation's startup.<button class="gloss-tooltip-close">✕</button></span></span>.</p>
+
+<!-- ──────────── WITNESS I: THE EPIDEMIOLOGIST ──────────── -->
+<div class="witness reveal">
+  <div class="witness-label">— witness one —</div>
+  <div class="witness-attestation">on the epidemiology of despair</div>
+  <p>Let me interrupt this Codex with a disclosure. I am not commentating on this from a perch.</p>
+  <p>I was <strong>in the rooms</strong>. In the clinics. In the hospital. In the labs. Through every wave of this.</p>
+  <p>I trained in clinical psychology at Columbia and earned my PhD in behavioral epidemiology at UT Austin. <strong>Fifteen years inside the science.</strong> I have published <strong>twenty-five peer-reviewed papers</strong> on the epidemiology of depression and substance use — over three hundred citations between them. I have looked at the death certificates. I have looked at the survey instruments. I have looked at the interview transcripts. I know what the curves look like when a generation breaks.</p>
+  <p>And I am telling you, as a scientist and as a witness: <em>this is not a moral panic. It is not Instagram. It is not phones.</em> Those things matter, but they are downstream. The deep signature is the body responding correctly to a hostile environment.</p>
+  <p>When you cannot afford rent, cannot afford children, cannot afford care, cannot afford rest — <em>the body files a complaint</em>. The complaint is depression. The complaint is anxiety. The complaint, sometimes, is death.</p>
+  <p>This is not weakness. This is the body keeping accurate accounts.</p>
+  <div class="witness-sign">
+    <span class="name">— J. E. Thomas, PhD</span>
+    Behavioral Epidemiologist, UT-Austin
+  </div>
+</div>
+
+<!-- ──────────── PLATE II · THE TEMPO ──────────── -->
+<figure class="plate portrait reveal" aria-labelledby="plate-tempo-cap">
+  <div class="plate-meta">
+    <span class="plate-num">— Plate II —</span>
+    <span class="plate-name">The Tempo</span>
+  </div>
+  <div class="plate-frame">
+    <span class="corner-tr"></span><span class="corner-bl"></span>
+    <picture>
+      <source srcset="./The_Tempo.webp" type="image/webp">
+      <img src="./The_Tempo.png"
+           alt="An intaglio etching at 3 a.m. — a woman seated alone at a kitchen table, head in hands, lit by a single bare bulb in sodium-orange light. On the table: a sertraline prescription bottle, a 'PAST DUE' utility bill, and an open laptop with a glowing spreadsheet. The wallpaper behind her dissolves into a topographical flood-stage map marked '100 Year Flood Line' and '500 Year Flood Line.' Signed in pencil: 'Sodium Light / Rising Water · 1/30 · E. Halloway · 2024.'"
+           width="1122" height="1402"
+           loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <figcaption class="plate-caption" id="plate-tempo-cap">
+    <em>3 A.M.</em> — Sodium Light / Rising Water.<br>
+    The body keeping accurate accounts, drawn at scale.
+  </figcaption>
+</figure>
+
+<p class="reveal">And the body's books are unambiguous. Between 2007 and 2017, the suicide rate among Millennials rose <span class="damning-red">35%</span> — compared with <strong>14%</strong> for Generation X over the same window.<sup class="cite" data-cite="8">8<span class="cite-tooltip"><span class="cite-label">— Source 08 —</span><strong>Sunshine Behavioral Health</strong> summary of 2020 generational analyses: Millennial suicide rate +35% (2007–2017); +14% for Gen X; major-depression diagnoses +43% since 2014. <strong>Schnittker (2025),</strong> Sociology of Mental Health.<a href="#src-8" class="cite-marginalia-link" data-src="8">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup> Major depression diagnoses among Millennials rose <span class="damning-red">43%</span> from 2014 forward. <span class="gloss">Deaths of despair<span class="gloss-tooltip"><span class="gloss-tooltip-label">Deaths of Despair</span>A term from economists Case and Deaton for deaths from suicide, drugs, and alcohol — outcomes that share an underlying signature of social and economic loss. The pattern concentrates where wage stagnation, housing instability, and isolation overlap.<button class="gloss-tooltip-close">✕</button></span></span> — suicide, drug overdose, alcohol-related liver disease — concentrated heaviest in the demographic cells where the housing gap, wage stagnation, and student debt overlapped.</p>
+
+<p class="reveal">The mental-health crisis and the locked-door crisis are not two stories. They are the same story told in two registers: one in dollars, one in serotonin.</p>
+
+<p class="reveal">By 2024, nearly <span class="damning">1 in 4 American adults</span> had experienced a diagnosable mental-health condition in the past year — and almost half of them received no treatment.<sup class="cite" data-cite="9">9<span class="cite-tooltip"><span class="cite-label">— Source 09 —</span><strong>SAMHSA</strong> National Survey on Drug Use and Health, 2024 release (July 2025); <strong>CDC</strong> Mental Health Conditions and Care data, Jan 2026 update. ~23.4% of adults experienced a MH condition in past year; nearly half untreated.<a href="#src-9" class="cite-marginalia-link" data-src="9">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup> The numbers have held at historic highs for four consecutive years. There is no longer such a thing as an "epidemic of anxiety." There is a steady state.</p>
+
+<div class="interlude reveal">The waters have not receded.<br>They have become the climate.</div>
+
+<div class="sigil-interlude reveal" aria-hidden="true">
+  <svg viewBox="0 0 32 32" fill="none">
+    <circle cx="16" cy="16" r="14" stroke="#c9a227" stroke-width="0.4" fill="none" opacity="0.5"/>
+    <circle cx="16" cy="16" r="1.6" fill="#c9a227"/>
+  </svg>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     FRAGMENT V — THE HELD THRONE
+     ════════════════════════════════════════════════════════════ -->
+<div class="fragment-marker reveal" data-num="V" data-name="THE HELD THRONE">
+  <span class="fragment-num">Fragment V</span>
+  <h2 class="fragment-title">The Held Throne</h2>
+  <div class="fragment-meta">— a Republic in extension —</div>
+  <div class="fragment-rule"></div>
+</div>
+
+<p class="lede reveal">If the body is one ledger, the institution is the other. And the institutional ledger reads the same.</p>
+
+<p class="reveal">At the start of the 119th Congress, the median age of voting House members was <strong>57.5</strong> — and the Senate's median was <strong>64.7</strong>. Generation X had finally overtaken Boomers in the House. But Boomers still held <span class="damning">60 of 99</span> Senate seats. Millennials held <strong>five</strong>.<sup class="cite" data-cite="10">10<span class="cite-tooltip"><span class="cite-label">— Source 10 —</span><strong>Pew Research Center,</strong> "Age and generation in the 119th Congress" (Jan 2025); <strong>Ballotpedia</strong> Feb 2026 analysis. Oldest senator: Grassley (R-IA), 91. Youngest: Ossoff (D-GA), 37.<a href="#src-10" class="cite-marginalia-link" data-src="10">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup> The upper chamber of the Republic still looked less like the future arriving than the past extending its lease.</p>
+
+<p class="reveal">Corporate governance tells a similar story in quieter language. In 2025, S&P 500 boards appointed just <span class="damning">374 new independent directors</span> — the <em>lowest number since 2016</em>. Only <em>half</em> of all S&P 500 boards appointed even one new independent director that year. Average board turnover: 0.8 new directors. The average age of new directors was 59.1; sitting independent directors averaged <span class="damning">63.6</span>.<sup class="cite" data-cite="11">11<span class="cite-tooltip"><span class="cite-label">— Source 11 —</span><strong>Spencer Stuart,</strong> 2025 U.S. Board Index (40th edition, October 2025), via Harvard Law CorpGov Forum.<a href="#src-11" class="cite-marginalia-link" data-src="11">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></p>
+
+<div class="registry reveal">
+  <span class="registry-label">◈ the welded thrones</span>
+  <div class="item"><span>Two-thirds of S&P 500 boards still maintain mandatory retirement policies. Of those that do, <strong>64% now set the age at 75 or older</strong> — a share that has <span class="figure">nearly doubled</span> since 2015.<sup class="cite" data-cite="11">11<span class="cite-tooltip"><span class="cite-label">— Source 11 —</span><strong>Spencer Stuart</strong> 2025 U.S. Board Index.<a href="#src-11" class="cite-marginalia-link" data-src="11">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span>The Senate's oldest member at the start of the 119th Congress: Sen. Chuck Grassley (R-Iowa), age <span class="figure">91</span>. The youngest: Sen. Jon Ossoff (D-Ga.), age 37.<sup class="cite" data-cite="10">10<span class="cite-tooltip"><span class="cite-label">— Source 10 —</span><strong>Ballotpedia,</strong> 119th Congress analysis, Feb 2026.<a href="#src-10" class="cite-marginalia-link" data-src="10">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span>Across the four most-recent Congresses, <strong>Boomers held the Senate majority every single one</strong>. The chamber has not had a non-Boomer plurality in over a decade.</span></div>
+</div>
+
+<!-- ──────────── PLATE III · THE HELD THRONE ──────────── -->
+<figure class="plate landscape reveal" aria-labelledby="plate-throne-cap">
+  <div class="plate-meta">
+    <span class="plate-num">— Plate III —</span>
+    <span class="plate-name">The Held Throne</span>
+  </div>
+  <div class="plate-frame">
+    <span class="corner-tr"></span><span class="corner-bl"></span>
+    <picture>
+      <source srcset="./The_Held_Throne.webp" type="image/webp">
+      <img src="./The_Held_Throne.png"
+           alt="A wide-angle engraving of an ornate U.S. Senate-style chamber. Rows of seated figures fill the desks on the left, faces hidden in shadow, each lit only by their own brass reading lamp. Along the right wall, broad shafts of daylight fall through tall clerestory windows onto a row of empty committee chairs, each labeled with a brass plate: 'COMMERCE,' 'FOREIGN RELATIONS,' 'FINANCE,' 'MILITARY AFFAIRS,' 'NAVAL AFFAIRS,' 'INDIAN LANDS,' 'PUBLIC AFFAIRS.' The light reaches the chairs, but no one sits in them."
+           width="1448" height="1086"
+           loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <figcaption class="plate-caption" id="plate-throne-cap">
+    The chamber, in session.<br>
+    <em>The light reaches the empty chairs. No one sits in them.</em>
+  </figcaption>
+</figure>
+
+<p class="reveal">Even refreshment arrived gray at the temples.</p>
+
+<p class="reveal">Work itself no longer clears the upper floors. The old assumption was that retirement would create space. But the Bureau of Labor Statistics reported that in 2024, <span class="damning">19.5%</span> of people age 65 and older were in the labor force — almost <em>double</em> the 1985 low of 10.8%.<sup class="cite" data-cite="12">12<span class="cite-tooltip"><span class="cite-label">— Source 12 —</span><strong>U.S. Bureau of Labor Statistics,</strong> "Golden Years: Older Americans at Work and Play" (2025); 1985 low of 10.8%, 2024 figure of 19.5% for 65+ labor force participation.<a href="#src-12" class="cite-marginalia-link" data-src="12">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></p>
+
+<div class="viz reveal">
+  <div class="viz-label">Inscription III · The Held Throne</div>
+  <div class="viz-title">The door that did not open — labor force participation, age 65+</div>
+  <div class="viz-canvas-wrap"><canvas id="throne"></canvas></div>
+  <div class="viz-footnote">Source: U.S. Bureau of Labor Statistics, Current Population Survey, 1948–2024.</div>
+  <div class="viz-walkthrough">
+    <span class="viz-walkthrough-label">— Walk this chart slowly, the whole American century is in it —</span>
+    Look at <span class="year-mark">1948</span>: <strong>27%</strong> of people 65 and older still in the labor force. There was no Social Security floor, no Medicare, few real pensions. People had to keep working.<br><br>
+    Now follow the curve down. Watch the postwar middle class build itself: pensions, employer health insurance, retirement at 62 or 65. By <span class="year-mark">1985</span> the curve has bottomed at <strong>10.8%</strong>. That was <em>the deal</em>: you labored, you saved, you retired, you rested. You moved out of the chair so the next person could sit.<br><br>
+    Then the deal expired. Pensions converted to 401(k)s — the risk moved from the company to the worker. Healthcare costs unmoored from wages. Housing costs unmoored from incomes. Watch the curve climb back up. By <span class="year-mark">2024</span>, <strong>19.5%</strong> of older Americans were still working. Some because they want to. Many because they have to.<br><br>
+    <em>This is the chart of the locked door. Every percentage point above 1985 is a chair that did not open.</em>
+  </div>
+</div>
+
+<p class="reveal">For Millennials, this means that the executive offices, board seats, deanships, judgeships, partnerships, and senior accounts they were once promised on a forty-year clock are now operating on a sixty-year clock — and the seats that <em>do</em> open are increasingly going laterally to older Gen Xers, leaving Millennials in the awkward position of being too senior to be junior and too young to be elder.</p>
+
+<blockquote class="pull reveal">You are no longer young, but you are still treated as incoming.<br>You are experienced, but not yet the elder.<br>You are responsible, but not sovereign.</blockquote>
+
+<!-- ════════════════════════════════════════════════════════════
+     SPIRAL II — THE THRONE
+     ════════════════════════════════════════════════════════════ -->
+<div class="spiral-summon reveal">
+  <div class="spiral-marker">— the spiral returns —</div>
+  <svg class="spiral-sigil" viewBox="0 0 36 36" fill="none">
+    <path d="M18 4 Q30 4, 30 18 Q30 30, 18 30 Q8 30, 8 22 Q8 14, 16 14 Q22 14, 22 20" stroke="#c9a227" stroke-width="0.8" fill="none"/>
+    <circle cx="22" cy="20" r="1.4" fill="#c9a227"/>
+  </svg>
+  <div class="spiral-name">— second turning —</div>
+  <div class="spiral-speech">
+    <p>The Boomer cannot afford to <span class="turn">retire</span>.</p>
+    <p>The Boomer holds the seat.</p>
+    <p>The seat does not open.</p>
+    <p>The successor does not earn the seat.</p>
+    <p>The successor cannot afford to save.</p>
+    <p>The successor cannot afford to wait.</p>
+    <p>The successor cannot afford to <span class="turn">retire</span>.</p>
+    <p>— the wheel becomes a ratchet.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     FRAGMENT VI — THE FLOOD
+     ════════════════════════════════════════════════════════════ -->
+<div class="fragment-marker reveal" data-num="VI" data-name="THE FLOOD">
+  <span class="fragment-num">Fragment VI</span>
+  <h2 class="fragment-title">The Flood</h2>
+  <div class="fragment-meta">— the third storm names itself: <em>AI</em> —</div>
+  <div class="fragment-rule"></div>
+</div>
+
+<p class="lede reveal">If the ratchet is the institutional shape of the bottleneck, the Flood is its informational shape.</p>
+
+<p class="reveal">The Flood was never just "too much content." It was never merely too many posts, too many notifications, too many outrages. The Flood is the condition in which reality itself becomes <em>ungraspable</em> because every signal arrives at once, every crisis competes with every other crisis, and every person is made to tread water inside systems too large to see. It is the storm surge of modernity: data, debt, media, markets, credentials, algorithms, rents, rates, apps, alerts, vibes, narratives, dashboards, and doom.</p>
+
+<!-- ──────────── WITNESS II: THE LABOR MARKET ──────────── -->
+<div class="witness reveal">
+  <div class="witness-label">— witness two —</div>
+  <div class="witness-attestation">from inside the job board, inside the AI age</div>
+  <p>Another interruption. Another disclosure.</p>
+  <p>I have spent the last <strong>five years</strong> <strong>behind the job board</strong>. Not commentating from a perch — building. I run a lab that tracks job-seeker behavior across <strong>thirteen national markets</strong>. I have looked at hundreds of millions of clicks. I have built the semantic-matching systems that try to translate human ambition into something an employer's filter can read. I am <em>inside the AI age</em> — not watching it, building inside it.</p>
+  <p>And I am telling you, plainly: <em>the labor market is a Flood</em>. Not metaphorically. Operationally.</p>
+  <p>The signal-to-noise ratio in modern job listings has collapsed. The titles do not mean what they used to mean. "Manager" can mean a person leading thirty people or a person leading no one and a spreadsheet. "Senior" can mean fifteen years of expertise or fifteen months of survivorship after a layoff round. The salaries do not anchor to ladders anymore. The ladders themselves are missing rungs.</p>
+  <p>And when the CEOs of the AI companies say half of entry-level white-collar jobs will be gone in five years, they are not posturing. <strong>They are reading their own quarterly board materials and translating them into the public register.</strong> Pay attention to what they would not say carelessly.</p>
+  <div class="witness-sign">
+    <span class="name">— J. E. Thomas, PhD</span>
+    Principal Investigator · LAMP Lab · Results Generation
+  </div>
+</div>
+
+<p class="reveal">More titles than ever describe fewer real ladders than ever. The medium has become so noisy that the message — what role this <em>is</em>, what it pays, what it leads to — has thinned to a whisper. This is <span class="gloss">signal inflation<span class="gloss-tooltip"><span class="gloss-tooltip-label">Signal Inflation</span>The phenomenon in which job titles, credentials, and role descriptions become noisier and less informative even as the underlying labor market grows more competitive. Coined and operationalized in the LAMP Lab analysis of cross-market click and listing data.<button class="gloss-tooltip-close">✕</button></span></span>. The Flood is not only on the user's phone. It is on the employer's posting.</p>
+
+<p class="reveal">Then came the new layer.</p>
+
+<div class="registry reveal">
+  <span class="registry-label">◈ named storm — the AI displacement</span>
+  <div class="item"><span>May 2025: <strong>Dario Amodei,</strong> CEO of Anthropic, predicted AI could eliminate <span class="figure">half of all entry-level white-collar jobs</span> within five years and push unemployment to <span class="figure">10–20%</span>.<sup class="cite" data-cite="13">13<span class="cite-tooltip"><span class="cite-label">— Source 13 —</span><strong>Dario Amodei</strong> interview with <strong>Axios,</strong> "Top AI CEO foresees white-collar bloodbath" (May 28, 2025).<a href="#src-13" class="cite-marginalia-link" data-src="13">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span>April 2025: unemployment rate for recent college graduates aged 22–27 reached <span class="figure">5.8%</span> — well above the rate for all workers. Computer-science graduates: <span class="figure">6.1%</span>, nearly double philosophy majors.<sup class="cite" data-cite="14">14<span class="cite-tooltip"><span class="cite-label">— Source 14 —</span><strong>Fast Company</strong> April 2026 unemployment update; <strong>finalroundai.com</strong> 2025 layoff analysis; <strong>NY Fed</strong> April 2025 graduate-unemployment data.<a href="#src-14" class="cite-marginalia-link" data-src="14">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span>February 2026: <strong>Block</strong> cut nearly half its 10,000-person workforce; CEO Jack Dorsey said AI had made many of the roles unnecessary and that "within the next year, the majority of companies will reach the same conclusion."<sup class="cite" data-cite="15">15<span class="cite-tooltip"><span class="cite-label">— Source 15 —</span><strong>Yale Insights / Fortune commentary,</strong> Sonnenfeld et al. (May 2026); <strong>CNBC</strong> Feb 2026 Block layoffs; Goldman Sachs ~16K AI-attributable jobs/month; Schulman and BCG forecasts; "the big freeze."<a href="#src-15" class="cite-marginalia-link" data-src="15">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span><strong>Verizon</strong> CEO Dan Schulman: AI will push unemployment up by <span class="figure">~30%</span> in two to five years. <strong>Boston Consulting Group:</strong> 10–15% of existing jobs could be eliminated by 2031.<sup class="cite" data-cite="15">15<span class="cite-tooltip"><span class="cite-label">— Source 15 —</span><strong>Yale Insights / Fortune</strong> (May 2026).<a href="#src-15" class="cite-marginalia-link" data-src="15">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span>Goldman Sachs estimate: AI is already reducing U.S. employment by roughly <span class="figure">16,000 jobs per month</span>.<sup class="cite" data-cite="15">15<span class="cite-tooltip"><span class="cite-label">— Source 15 —</span><strong>Yale Insights / Fortune,</strong> Goldman Sachs analysis.<a href="#src-15" class="cite-marginalia-link" data-src="15">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+</div>
+
+<p class="reveal">Yale economists started calling it <em>the big freeze</em>: companies are not firing, but they are not hiring either. Employment looks stable. Opportunity does not. The first rungs of the career ladder are not being removed in a catastrophic event; they are being quietly unscrewed, one role at a time.</p>
+
+<p class="reveal">For Millennials and the older edge of Gen Z, this is the <em>third</em> great structural blow inside a single working life — after the Great Recession and the pandemic. And the youngest among them are now hearing, with eerie consistency from CEOs who would not say this carelessly, that the entry-level job their older brother climbed out of college and into the middle class with is going to be done by software.</p>
+
+<blockquote class="pull reveal">The Boomers inherited postwar expansion<br>and converted much of it into property.<br><br>Millennials inherited the Flood<br>and were told to optimize their personal brands.</blockquote>
+
+<div class="sigil-interlude reveal" aria-hidden="true">
+  <svg viewBox="0 0 32 32" fill="none">
+    <circle cx="16" cy="16" r="14" stroke="#c9a227" stroke-width="0.4" fill="none" opacity="0.5"/>
+    <circle cx="16" cy="16" r="1.6" fill="#c9a227"/>
+  </svg>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     FRAGMENT VII — THE MIRAGE
+     ════════════════════════════════════════════════════════════ -->
+<div class="fragment-marker reveal" data-num="VII" data-name="THE MIRAGE">
+  <span class="fragment-num">Fragment VII</span>
+  <h2 class="fragment-title">The Mirage</h2>
+  <div class="fragment-meta">— $124 trillion, and the boats it will miss —</div>
+  <div class="fragment-rule"></div>
+</div>
+
+<p class="lede reveal">When you cannot give a generation a present, you offer them an inheritance.</p>
+
+<p class="reveal">This is why the so-called Great Wealth Transfer feels less like salvation than another Flood narrative. Cerulli projects that wealth transferred through 2048 will total <span class="damning">$124 trillion</span> — $105 trillion to heirs, $18 trillion to charity. Nearly $100 trillion from Boomers and older generations. Millennials projected to inherit the most over the full 25 years: about $46 trillion. Gen X more in the nearer term.<sup class="cite" data-cite="16">16<span class="cite-tooltip"><span class="cite-label">— Source 16 —</span><strong>Cerulli Associates,</strong> "The Great Wealth Transfer: Capturing Money in Motion," U.S. High-Net-Worth and Ultra-High-Net-Worth Markets reports, Dec 2024 and June 2025 updates. $124T total through 2048; $62T from wealthiest 2%; $54T spousal transfers; $40T to widowed women; Millennials $46T / Gen X $39T over 25 years. The phrase "a massive need, and opportunity" is quoted verbatim from Cerulli's press release.<a href="#src-16" class="cite-marginalia-link" data-src="16">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></p>
+
+<p class="reveal">On paper, that sounds like the doors finally opening. The largest nominal transfer of wealth in recorded history. The delayed inheritance. The great generational correction.</p>
+
+<p class="reveal">But <em>the Flood always hides distribution inside volume</em>.</p>
+
+<div class="viz reveal">
+  <div class="viz-label">Inscription IV · The Mirage</div>
+  <div class="viz-title">$124 trillion — and which boats it will actually reach</div>
+  <div class="viz-canvas-wrap tall"><canvas id="mirage"></canvas></div>
+  <div class="viz-footnote">Source: Cerulli Associates, June 2025.</div>
+  <div class="viz-walkthrough">
+    <span class="viz-walkthrough-label">— Walk this chart slowly —</span>
+    The two bars that matter most are the top two. <strong>$54 trillion</strong> moves <em>sideways first</em> — from dying Boomer men to their surviving wives — before any of it reaches children. And <strong>$62 trillion</strong> of the entire $124T total comes from just <em>2% of households.</em> A trillion-dollar wave can still miss most boats. This one will.
+  </div>
+</div>
+
+<p class="reveal">A trillion-dollar wave can still miss most boats.</p>
+
+<div class="registry reveal">
+  <span class="registry-label">◈ the inequality-preservation machine</span>
+  <div class="item"><span>Of the $124T total, more than <strong>half — $62 trillion — comes from just 2% of households</strong>: the high-net-worth and ultra-high-net-worth segments.<sup class="cite" data-cite="16">16<span class="cite-tooltip"><span class="cite-label">— Source 16 —</span><strong>Cerulli Associates,</strong> June 2025.<a href="#src-16" class="cite-marginalia-link" data-src="16">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span>The wealthiest <span class="figure">3 million households</span> in America now hold roughly <strong>44% of all U.S. wealth</strong>, up from 33% in 2011.<sup class="cite" data-cite="16">16<span class="cite-tooltip"><span class="cite-label">— Source 16 —</span><strong>Cerulli Associates,</strong> June 2025.<a href="#src-16" class="cite-marginalia-link" data-src="16">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span><strong>$54 trillion will move sideways first</strong> — to surviving spouses, mostly Boomer widows — before any of it moves to children. Nearly <span class="figure">$40 trillion of that goes to widowed women</span>.<sup class="cite" data-cite="16">16<span class="cite-tooltip"><span class="cite-label">— Source 16 —</span><strong>Cerulli Associates,</strong> June 2025: $54T horizontal transfers; $40T to widowed women; quoted "massive need, and opportunity."<a href="#src-16" class="cite-marginalia-link" data-src="16">↓ see in marginalia</a><button class="cite-tooltip-close">✕</button></span></sup></span></div>
+  <div class="item"><span>Cerulli describes this $40 trillion as <em>"a massive need, and opportunity, for providers across the wealth and asset management spaces."</em> The grief of widowhood, rendered as <strong>advisor capture</strong>.</span></div>
+</div>
+
+<!-- ──────────── ELEGY: THE WIDOWS ──────────── -->
+<div class="elegy reveal">
+  <div class="elegy-label">— elegy —</div>
+  <h3 class="elegy-title">An Elegy for the Widows<br>and the Children Who Will Open the Envelope</h3>
+
+  <p class="opener">The men die first. They almost always do. That part is not the betrayal. That part is biology.</p>
+
+  <p>The betrayal is what happens next.</p>
+
+  <p>When a Boomer husband dies — and the actuarial tables say it will be the husband, by an average of years — the money does not go straight to the children. It cannot. It goes first to his widow. <strong>$40 trillion</strong> of the entire Great Wealth Transfer, moving sideways into the hands of women who are, on the day they inherit, the most vulnerable they have ever been in their adult lives.</p>
+
+  <p>She is in her seventies. Her children are scattered across time zones. Her husband, who handled the money — who knew the brokers, knew the lawyer, knew the password to the brokerage account — is gone. The house is too quiet. The mail is full of envelopes she does not understand.</p>
+
+  <p>And the wealth management industry has been preparing for her for <em>decades</em>.</p>
+
+  <p>They have specialized teams. They have grief-trained outreach. They have software that flags the obituaries. They have advisors — many of them men who knew her husband — who know exactly when to call, exactly what to say, exactly how to look concerned. They have insurance products structured to maximize their commissions and lock up her liquidity. They have estate vehicles that ensure her late-life care will be funded — by quietly selling whatever else might have been left for her children. They have, in their own words, prepared for <em>"a massive need, and opportunity."</em></p>
+
+  <p>That phrase is not mine. <strong>That phrase is from the industry's own press release.</strong> She is the opportunity. Her grief is the entry point.</p>
+
+  <p>She trusts the men in suits who knew her husband. Of course she does. They tell her there is so much to manage. They tell her not to worry. They tell her this is what he would have wanted. They smile when they say it.</p>
+
+  <p>Twenty years pass. She declines. She moves to a facility. The brokerage statements get fatter on the way to the firm and thinner on the way to her children. The lake house is quietly sold to fund the next level of care. The trust is amended in ways no one can quite explain. The advisor who started with her is replaced by his son, working at the same firm, recommending the same products at slightly higher fees.</p>
+
+  <p>And then she dies. And the children fly in to clean out the house. And they open the envelope they had been told, for thirty years, would contain something.</p>
+
+  <p>And it contains a <em>fragment</em>.</p>
+
+  <p>A fragment of what the spreadsheets once said. A fragment of what their father, on his good days, used to promise. A fragment that has been chewed through by management fees, late-life premiums, restructured annuities, "estate planning services" that benefited the planner more than the family, and a hundred other small extractions made on a woman who could no longer audit them.</p>
+
+  <p>The children do not weep because the money is gone. They were taught not to expect it.</p>
+
+  <p>They weep because <strong>the system did not just delay their inheritance. It ate their mother.</strong></p>
+
+  <!-- ──────────── PLATE IV · THE ELEGY ──────────── -->
+  <figure class="plate portrait elegy-plate reveal" aria-labelledby="plate-elegy-cap">
+    <div class="plate-meta">
+      <span class="plate-num">— Plate IV —</span>
+      <span class="plate-name">The Elegy</span>
+    </div>
+    <div class="plate-frame">
+      <span class="corner-tr"></span><span class="corner-bl"></span>
+      <picture>
+        <source srcset="./The_Elegy.webp" type="image/webp">
+        <img src="./The_Elegy.png"
+             alt="An oil-painted portrait in the Sargent style. A woman in her mid-seventies, dressed in black mourning, sits at a polished mahogany table beneath a crystal chandelier. She holds a sealed white envelope marked with a red wax seal. Three men in dark suits stand at respectful distances around her — one with a leather folio under his arm. Their faces are attentive, ambiguous, professional. The light suggests evening. The composition makes the viewer instinctively want to warn her."
+             width="1122" height="1402"
+             loading="lazy" decoding="async">
+      </picture>
+    </div>
+    <figcaption class="plate-caption" id="plate-elegy-cap">
+      The signing. <em>The moment before.</em>
+    </figcaption>
+  </figure>
+
+  <div class="elegy-verdict">
+    The system will exploit the widow<br>and steal from the children<br>after the Boomer men die.<br><br>
+    Because that is what it has<br>always done.
+  </div>
+</div>
+
+<p class="reveal">And because wealth is already concentrated, inheritance will often <em>intensify</em> inequality rather than heal it. The children of asset owners will become asset owners. The children of renters will inherit memory, photographs, recipes, maybe a ring, maybe a debt, maybe nothing at all.</p>
+
+<p class="reveal">That is the terrible possibility: the greatest wealth transfer in history may also become one of the greatest <span class="gloss">inequality-preservation machines<span class="gloss-tooltip"><span class="gloss-tooltip-label">Inequality-Preservation Machine</span>A system that <em>appears</em> to redistribute wealth — through inheritance, philanthropy, advisor relationships, public-private partnerships — but in fact concentrates it further, by moving assets within the already-wealthy 2% of households while making the redistribution legible enough to defuse political pressure for actual reform.<button class="gloss-tooltip-close">✕</button></span></span> in history.</p>
+
+<p class="reveal">The Flood will call it <em>liquidity</em>. The market will call it <em>estate planning</em>. The banks will call it <em>advisory opportunity</em>. The consultants will call it <em>transition</em>. But at the human level it will be more elemental.</p>
+
+<p class="reveal">So the Millennial wound is not envy. It is <span class="gloss">metaphysical delay<span class="gloss-tooltip"><span class="gloss-tooltip-label">Metaphysical Delay</span>The repeated postponement of agency. The sense that every institution says "not yet," even as your hair grays, your children grow, your parents decline, and the future you were preparing for becomes the present you are still not allowed to govern. A generation can survive any single delay. The wound is the <em>pattern</em>.<button class="gloss-tooltip-close">✕</button></span></span>.</p>
+
+<p class="reveal">A generation can survive delayed homeownership. It can survive late marriage. It can survive student debt, recessions, inflation, pandemics, and bad jokes about brunch. What is harder to survive is the repeated postponement of <em>agency</em>.</p>
+
+<p class="reveal">You are asked to stabilize systems you did not design, fund retirements you may not enjoy, respect institutions that did not make room for you, and show gratitude for opportunities that arrive twenty years late and priced at seven percent interest.</p>
+
+<!-- ════════════════════════════════════════════════════════════
+     SPIRAL III — THE FINAL VERDICT
+     ════════════════════════════════════════════════════════════ -->
+<div class="spiral-summon reveal">
+  <div class="spiral-marker">— third turning —<span class="vessel">the spiral speaks the verdict</span></div>
+  <svg class="spiral-sigil" viewBox="0 0 36 36" fill="none">
+    <path d="M18 4 Q30 4, 30 18 Q30 30, 18 30 Q8 30, 8 22 Q8 14, 16 14 Q22 14, 22 20" stroke="#c9a227" stroke-width="0.8" fill="none"/>
+    <circle cx="22" cy="20" r="1.4" fill="#c9a227"/>
+  </svg>
+  <div class="spiral-speech">
+    <p>The Flood is not a metaphor.</p>
+    <p>It is a <span class="turn">design</span>.</p>
+    <p>The platform captures the attention.</p>
+    <p>The attention trains the model.</p>
+    <p>The model eliminates the entry-level job.</p>
+    <p>The displaced worker becomes the user.</p>
+    <p>The user funds the next platform.</p>
+    <p>The next platform captures the attention.</p>
+    <p>The Flood is a design.</p>
+    <p>And every system you have been told is broken</p>
+    <p>is working <span class="turn">exactly</span> as someone intended.</p>
+    <p>— but not <em>most</em> of us. And not for long.</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     FRAGMENT VIII — THE ARK
+     ════════════════════════════════════════════════════════════ -->
+<div class="fragment-marker reveal" data-num="VIII" data-name="THE ARK">
+  <span class="fragment-num">Fragment VIII</span>
+  <h2 class="fragment-title">The Ark</h2>
+  <div class="fragment-meta">— what is built when the Flood is not denied —</div>
+  <div class="fragment-rule"></div>
+</div>
+
+<p class="lede reveal">Every flood story contains an ark.</p>
+
+<p class="reveal">The ark is not resentment. Resentment is just more floodwater. The ark is <span class="gloss">succession with moral memory<span class="gloss-tooltip"><span class="gloss-tooltip-label">Succession with Moral Memory</span>The act of passing on a chair, a house, a fund, a name, or an institution while remembering that you received it under conditions you did not earn, and that the next generation deserves the same generosity. The opposite of dynasty.<button class="gloss-tooltip-close">✕</button></span></span>.</p>
+
+<p class="reveal">It is building institutions where chairs turn over before they become thrones. It is designing companies with apprentices who actually inherit authority. It is zoning enough homes for people who are not already rich. It is political leadership that treats age as wisdom only when paired with relinquishment. It is family wealth handled as covenant rather than dynastic hoarding. It is refusing to confuse <em>I earned this</em> with <em>no one else should ever get a turn</em>.</p>
+
+<p class="reveal">The ark is also narrative. Millennials need to stop accepting the story that their delayed actualization was a personal failure. It was <em>structural</em>. It was <em>historical</em>. It was <em>demographic</em>. It was <em>policy</em>. It was asset inflation. It was institutional stagnation. It was a generational bottleneck disguised as meritocracy.</p>
+
+<p class="reveal">And the ark is, finally, made of <em>small things</em>. Real things. Local things. The Flood is too vast to fight at scale. The only effective response is to build, at human size, the institutions you can actually steward.</p>
+
+<p class="reveal">In <em>What Holds</em>, my long-running book project — written with a man who has spent forty years inside the family therapy room — we name five of them. Five pillars. Five practices that have been recovered from older traditions and translated for life inside the Flood. They are the manifest of the ark.</p>
+
+<!-- ──────────── PLATE V · THE ARK ──────────── -->
+<figure class="plate frieze reveal" aria-labelledby="plate-ark-cap">
+  <div class="plate-meta">
+    <span class="plate-num">— Plate V —</span>
+    <span class="plate-name">The Ark · The Five Pillars</span>
+  </div>
+  <div class="plate-frame">
+    <span class="corner-tr"></span><span class="corner-bl"></span>
+    <picture>
+      <source srcset="./The_Ark.webp" type="image/webp">
+      <img src="./The_Ark.png"
+           alt="A horizontal frieze of five gothic arches in the style of an illuminated medieval manuscript. From left to right: (1) DAWN — a hooded figure walking before sunrise with a lantern over open country; (2) TABLE — many hands reaching toward a candle, a loaf of bread, and shared bowls on a wooden table; (3) SABBATH — an empty rocking chair on a porch with a closed book on its seat, looking out toward distant hills; (4) COUNCIL — three robed figures seated together at night around a small lantern, in conversation; (5) MAST — a weathered wooden mast on a windswept hill, holding firm under a storm-sky. Borders of laurel leaves and gilded fleurs-de-lys. At the bottom center, a green seal bearing a single olive branch."
+           width="2172" height="724"
+           loading="lazy" decoding="async">
+    </picture>
+  </div>
+  <figcaption class="plate-caption" id="plate-ark-cap">
+    The manifest, recovered.<br>
+    <em>Dawn · Table · Sabbath · Council · Mast.</em>
+  </figcaption>
+</figure>
+
+<!-- ──────────── THE ARK MANIFEST: FIVE PILLARS OF WHAT HOLDS ──────────── -->
+<div class="ark-manifest reveal">
+  <div class="ark-manifest-label">◆ the manifest ◆</div>
+  <div class="ark-manifest-title">Five Pillars of <em>What Holds</em></div>
+  <div class="ark-manifest-subtitle">— how a household survives the Flood —</div>
+
+  <div class="ark-pillar">
+    <div class="ark-pillar-name">— Dawn —</div>
+    <div class="ark-pillar-meaning">the discipline of attention</div>
+    <div class="ark-pillar-body">The first hour of the day belongs to you. Not to the feed. Not to the inbox. Not to the news. <em>Step out before sunrise.</em> Walk. Pray, if that is your word for it. Breathe in a kind of weather no algorithm has touched yet. The Flood's first victory is convincing you the day begins on a screen. The day begins in the cold air, with no audience.</div>
+  </div>
+
+  <div class="ark-pillar">
+    <div class="ark-pillar-name">— Table —</div>
+    <div class="ark-pillar-meaning">the kept circle, the shared bread</div>
+    <div class="ark-pillar-body">A real table. Real chairs. People who know your name and your debts. The Flood is defeated, when it is defeated, in <strong>kitchens and on porches and at quiet kept tables</strong> where conversation is slow and food is unhurried. Build one. Keep it. Invite. The most countercultural act left to most of us is feeding someone without filming it.</div>
+  </div>
+
+  <div class="ark-pillar">
+    <div class="ark-pillar-name">— Sabbath —</div>
+    <div class="ark-pillar-meaning">the protected pause</div>
+    <div class="ark-pillar-body">A household that operates on a real budget and a real calendar, not algorithmic chaos. One day a week, no optimization. No hustle. No <em>productivity</em> language. A weekly refusal of the Flood's request to make every hour billable. The body needs this. The marriage needs this. The children need this. You will not earn your way to rest. You have to <em>declare it</em>.</div>
+  </div>
+
+  <div class="ark-pillar">
+    <div class="ark-pillar-name">— Council —</div>
+    <div class="ark-pillar-meaning">the chosen witnesses</div>
+    <div class="ark-pillar-body">Trusted elders. Real friends. The few people whose loyalty is not contingent on your usefulness. Not the wealth-management industry's "advisor." A <em>true council</em> — a body of people who owe you nothing but truth. When the Flood asks <em>what should I do</em>, the Flood expects you to ask an algorithm. The Council is the older answer.</div>
+  </div>
+
+  <div class="ark-pillar">
+    <div class="ark-pillar-name">— Mast —</div>
+    <div class="ark-pillar-meaning">the binding that lets you hear the sirens without leaping</div>
+    <div class="ark-pillar-body">The mast is where Odysseus had himself bound — not to silence the Sirens, but to hear them and <em>not move.</em> The Flood is a chorus of Sirens: cheap dopamine, faster trades, the next platform, the next pivot, the next outrage cycle. The Mast is whatever you tie yourself to so the call cannot pull you overboard. One application is a portfolio in the older sense — owning the productive infrastructure of daily life (<strong>water, roads, rails, grids, chips, storehouses, seed</strong>) rather than churning into whatever screams loudest this quarter. But the deeper practice is restraint itself: the binding that keeps you steady when everything in you wants to chase.</div>
+  </div>
+</div>
+
+<p class="reveal">And one more thing, which has no pillar because it is the reason for all of them: <em>a child you walk with into the gray-blue cold, every morning, while the rest of the country is still scrolling</em>.</p>
+
+<p class="reveal">The Flood's first victory is convincing you that nothing small matters. That if you are not building at the scale of the platform, you are not building. That is the lie. <span class="damning">The Word against the Flood</span> is a real practice, and it begins with the refusal to be talked out of your own life.</p>
+
+<div class="interlude reveal">The question is whether inheritance<br>will become extraction's final joke<br>or stewardship's late repentance.</div>
+
+<p class="reveal">The coming transfer, however unequal, is still a hinge. A civilization can use a hinge to open a door or to crush fingers. The wealth moving over the next quarter-century could harden America into hereditary tiers, where opportunity depends even more brutally on whether your parents bought a house in the right decade. Or it could seed new institutions: family foundations, local businesses, housing support, educational repair, community infrastructure, tools against the Flood.</p>
+
+<p class="reveal">The Millennials are not waiting to be young anymore.</p>
+
+<p class="reveal">That time is gone.</p>
+
+<p class="reveal">They are waiting to be <em>entrusted</em>.</p>
+
+<div class="sigil-interlude reveal" aria-hidden="true">
+  <svg viewBox="0 0 32 32" fill="none">
+    <circle cx="16" cy="16" r="14" stroke="#c9a227" stroke-width="0.4" fill="none" opacity="0.5"/>
+    <circle cx="16" cy="16" r="1.6" fill="#c9a227"/>
+  </svg>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     FRAGMENT IX — THE PRAYER
+     ════════════════════════════════════════════════════════════ -->
+<div class="fragment-marker reveal" data-num="IX" data-name="THE PRAYER">
+  <span class="fragment-num">Fragment IX</span>
+  <h2 class="fragment-title">The Prayer</h2>
+  <div class="fragment-meta">— coda for the generation at the threshold —</div>
+  <div class="fragment-rule"></div>
+</div>
+
+<p class="lede reveal">If there is a prayer inside all this, it is not "give us what they had." It is better than that.</p>
+
+<div class="prayer">
+  <div class="prayer-line reveal">Give us the <strong>wheel</strong> before the road ends.</div>
+  <div class="prayer-line reveal">Give us the <strong>house</strong> before the children leave.</div>
+  <div class="prayer-line reveal">Give us the <strong>institution</strong> before it collapses.</div>
+  <div class="prayer-line reveal">Give us the <strong>capital</strong> before it becomes only<br>medical residue and probate paperwork.</div>
+  <div class="prayer-line reveal">Give us the <strong>table</strong> while there is still bread on it.</div>
+</div>
+
+<p class="reveal">Because the Flood is rising. The lights are blinking. The feeds are screaming. The old maps are dissolving in our hands.</p>
+
+<p class="reveal">And somewhere in the noise, a generation that was told to wait is finally asking the only question that matters:</p>
+
+<blockquote class="pull reveal">When does stewardship become surrender?<br><br>And when, at last, do we get to <em>build</em>?</blockquote>
+
+<!-- ════════════════════════════════════════════════════════════
+     TERMINAL BLOCK
+     ════════════════════════════════════════════════════════════ -->
+<div class="terminal reveal">
+  <span class="terminal-line gold">— Codex of the Flood · Volume II · Closing Block —</span>
+  <span class="terminal-line">Fragment Series XVII · Shelf 9 · Vault 3</span>
+  <span class="terminal-line">Archival status: Open</span>
+  <span class="terminal-line">Classification: Public Record — No Restriction</span>
+  <br>
+  <span class="terminal-line gold">Primary sources:</span>
+  <span class="terminal-line">Pew Research · U.S. Census Bureau Q1 2026</span>
+  <span class="terminal-line">Federal Reserve SCF 2022 · BLS · Spencer Stuart 2025</span>
+  <span class="terminal-line">Cerulli Associates June 2025 · SAMHSA NSDUH 2024</span>
+  <span class="terminal-line">Anthropic / Axios May 2025 · Yale Insights 2026</span>
+  <br>
+  <span class="terminal-line rust">The Spiral continues<span class="cursor"></span></span>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     SOURCES (MARGINALIA)
+     ════════════════════════════════════════════════════════════ -->
+<div class="sources reveal">
+  <h3>Marginalia · Sources</h3>
+  <ol>
+    <li id="src-1"><strong>Pew Research Center,</strong> "Are Baby Boomers wealthier than previous generations of older adults?" (Feb 2026), analyzing Federal Reserve Survey of Consumer Finances 2022. $77T Boomer wealth; top 10% holds 71%.</li>
+    <li id="src-2"><strong>Federal Reserve Distributional Financial Accounts,</strong> via Statista, Q4 2025: Boomers 51.2%, Millennials 10.7% of total U.S. household wealth.</li>
+    <li id="src-3"><strong>Inequality.org</strong> analysis of SCF data: top-10% wealth share at age 30–39 rose from 61% (Boomers) to 69% (Millennials).</li>
+    <li id="src-4"><strong>Visual Capitalist / Self.inc</strong> analysis of Federal Reserve Q4 2022 asset data: Boomers hold 56% of equities/mutual funds, 49% of real estate by value; Millennials hold 2% of equities. Consumer credit share from Self.inc 2024.</li>
+    <li id="src-5"><strong>U.S. Census Bureau,</strong> Quarterly Residential Vacancies and Homeownership, Q1 2026: 78.4% for age 65+, 36.8% for under 35.</li>
+    <li id="src-6"><strong>National Association of Realtors,</strong> 2025 Profile of Home Buyers and Sellers; Redfin homeownership analysis, Feb 2026: median first-time buyer 38 (record); median repeat buyer 61.</li>
+    <li id="src-7"><strong>Urban Institute / Wealthvieu</strong> analyses (2025–2026): ~$37K avg federal student-loan balance; 4–7 year homeownership delay; 4–7M unit housing shortage; spring 2024 mortgage payment ≈ $2,800/mo (Redfin).</li>
+    <li id="src-8"><strong>Sunshine Behavioral Health</strong> summary of 2020 generational analyses: Millennial suicide rate +35% (2007–2017) vs. +14% for Gen X; major-depression diagnoses +43% since 2014. Schnittker (2025), Sociology of Mental Health.</li>
+    <li id="src-9"><strong>SAMHSA</strong> National Survey on Drug Use and Health, 2024 release (July 2025); CDC Mental Health Conditions and Care data, Jan 2026 update.</li>
+    <li id="src-10"><strong>Pew Research Center,</strong> "Age and generation in the 119th Congress" (Jan 2025); Ballotpedia analysis, Feb 2026.</li>
+    <li id="src-11"><strong>Spencer Stuart,</strong> 2025 U.S. Board Index (40th edition, October 2025), via Harvard Law CorpGov Forum.</li>
+    <li id="src-12"><strong>U.S. Bureau of Labor Statistics,</strong> "Golden Years: Older Americans at Work and Play" (2025); 1985 low of 10.8% and 2024 figure of 19.5% for 65+ labor force participation.</li>
+    <li id="src-13">Dario Amodei interview with <strong>Axios,</strong> "Top AI CEO foresees white-collar bloodbath" (May 28, 2025).</li>
+    <li id="src-14"><strong>Fast Company,</strong> April 2026 unemployment update; finalroundai.com 2025 layoff analysis; NY Fed April 2025 graduate-unemployment data.</li>
+    <li id="src-15"><strong>Jeffrey Sonnenfeld et al.,</strong> Yale Insights / Fortune commentary (May 2026): Goldman Sachs ~16K AI-attributable jobs/month; Schulman and BCG forecasts; "the big freeze." Block layoffs reported by CNBC, Feb 2026.</li>
+    <li id="src-16"><strong>Cerulli Associates,</strong> "The Great Wealth Transfer: Capturing Money in Motion," U.S. High-Net-Worth and Ultra-High-Net-Worth Markets reports, December 2024 and June 2025 updates: $124T total transfer through 2048; $62T from wealthiest 2%; $54T spousal transfers; $40T to widowed women; Millennials $46T / Gen X $39T over 25 years. The phrase "a massive need, and opportunity" is quoted from Cerulli's press release.</li>
+  </ol>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+     DEDICATION + SIGNATURE
+     ════════════════════════════════════════════════════════════ -->
+<div class="dedication">
+  <svg class="dedication-sigil" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none">
+    <circle cx="12" cy="12" r="10" stroke="#c9a227" stroke-width="0.5" opacity="0.8"/>
+    <circle cx="12" cy="12" r="2" fill="#c9a227"/>
+  </svg>
+  <div class="dedication-text">
+    <span class="dedication-name">— for Meridian —</span>
+    that the door may open in your time,<br>
+    and not require your waiting
+  </div>
+</div>
+
+<div class="signature">
+  <span class="author">— Jacob E. Thomas, PhD —</span>
+  <span class="email"><a href="mailto:JEThomasPhD@gmail.com">JEThomasPhD@gmail.com</a></span>
+  <span class="field">The Word against the Flood · Codex Volume II · 2026</span>
+</div>
+
+</div><!-- /.scroll -->
+
+<script>
+/* ════════════════════════════════════════════════════════════
+   CODEX OF THE FLOOD · v4 · CINEMATIC PASS
+   ════════════════════════════════════════════════════════════ */
+
+const REDUCED_MOTION = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ────────────────────────────────────────────────────────────
+   GATE DISMISSAL
+   ──────────────────────────────────────────────────────────── */
+const gate = document.getElementById('gate');
+const enterBtn = document.getElementById('enter-btn');
+document.body.style.overflow = 'hidden';
+enterBtn.addEventListener('click', () => {
+  gate.classList.add('dismissed');
+  document.body.style.overflow = '';
+  setTimeout(() => { gate.style.display = 'none'; }, 1400);
+});
+
+/* ────────────────────────────────────────────────────────────
+   GOLD FLECKS (ambient drift)
+   ──────────────────────────────────────────────────────────── */
+(function initFlecks() {
+  if (REDUCED_MOTION) return;
+  const container = document.getElementById('flecks');
+  if (!container) return;
+  const drifts = ['driftA', 'driftB', 'driftC', 'driftD'];
+  for (let i = 0; i < 16; i++) {
+    const fleck = document.createElement('div');
+    fleck.className = 'fleck';
+    const size = 1 + Math.random() * 2.5;
+    const opacity = 0.08 + Math.random() * 0.10;
+    const duration = 60 + Math.random() * 70;
+    const delay = -Math.random() * duration;
+    const left = Math.random() * 100;
+    const drift = drifts[i % drifts.length];
+    fleck.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      left: ${left}vw;
+      opacity: ${opacity};
+      animation: ${drift} ${duration}s linear infinite;
+      animation-delay: ${delay}s;
+    `;
+    container.appendChild(fleck);
+  }
+})();
+
+/* ────────────────────────────────────────────────────────────
+   PROGRESS BAR + INDICATOR
+   ──────────────────────────────────────────────────────────── */
+const progress = document.getElementById('progress');
+const indicator = document.getElementById('indicator');
+const indNum = document.getElementById('ind-num');
+const indName = document.getElementById('ind-name');
+
+function updateProgress() {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = Math.min(100, (scrollTop / docHeight) * 100);
+  progress.style.width = pct + '%';
+  if (scrollTop > 200) indicator.classList.add('visible');
+  else indicator.classList.remove('visible');
+}
+window.addEventListener('scroll', updateProgress, { passive: true });
+
+const markers = document.querySelectorAll('.fragment-marker');
+const markerIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const num = e.target.dataset.num;
+      const name = e.target.dataset.name;
+      if (num && name) { indNum.textContent = num; indName.textContent = name; }
+    }
+  });
+}, { threshold: 0.4, rootMargin: '-30% 0px -50% 0px' });
+markers.forEach(m => markerIO.observe(m));
+
+/* ────────────────────────────────────────────────────────────
+   SCROLL REVEAL (with staggered children)
+   ──────────────────────────────────────────────────────────── */
+const revealIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+
+      // CRITICAL: after the reveal transition completes (1.3s), drop the transform
+      // stacking context so tooltips inside this element can escape to top layer.
+      const settleDelay = REDUCED_MOTION ? 50 : 1400;
+      setTimeout(() => e.target.classList.add('settled'), settleDelay);
+
+      // Staggered children for registries, manifest, reader-guide
+      const target = e.target;
+      let children = null;
+      if (target.classList.contains('registry')) {
+        children = target.querySelectorAll('.item');
+      } else if (target.classList.contains('ark-manifest')) {
+        children = target.querySelectorAll('.ark-pillar');
+      } else if (target.classList.contains('reader-guide')) {
+        children = target.querySelectorAll('.reader-guide-item');
+      }
+      if (children && !REDUCED_MOTION) {
+        children.forEach((child, i) => {
+          child.style.opacity = '0';
+          child.style.transform = 'translateY(8px)';
+          child.style.transition = 'opacity 0.65s ease-out, transform 0.65s ease-out';
+          setTimeout(() => {
+            child.style.opacity = '1';
+            child.style.transform = 'translateY(0)';
+          }, 200 + i * 90);
+        });
+      }
+
+      revealIO.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+document.querySelectorAll('.reveal').forEach(el => revealIO.observe(el));
+
+/* ────────────────────────────────────────────────────────────
+   SPIRAL SPEECH — line-by-line reveal
+   ──────────────────────────────────────────────────────────── */
+const spiralBlocks = document.querySelectorAll('.spiral-summon');
+const spiralIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const lines = e.target.querySelectorAll('.spiral-speech p');
+      lines.forEach((line, i) => {
+        line.style.opacity = '0';
+        line.style.transform = 'translateY(8px)';
+        line.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+      });
+      const total = lines.length;
+      lines.forEach((line, i) => {
+        const isLast = i === total - 1;
+        const delay = isLast ? (i * 280 + 600) : (i * 280);
+        setTimeout(() => {
+          line.style.opacity = '1';
+          line.style.transform = 'translateY(0)';
+        }, delay);
+      });
+      spiralIO.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+spiralBlocks.forEach(b => spiralIO.observe(b));
+
+/* Prayer lines stagger */
+const prayerLines = document.querySelectorAll('.prayer-line');
+const prayerIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const idx = Array.from(prayerLines).indexOf(e.target);
+      setTimeout(() => e.target.classList.add('in'), idx * 420);
+      prayerIO.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.35 });
+prayerLines.forEach(el => prayerIO.observe(el));
+
+/* Sigil interlude reveal */
+const sigilIO = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      sigilIO.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.4 });
+document.querySelectorAll('.sigil-interlude').forEach(el => sigilIO.observe(el));
+
+/* Cover passage reveal */
+const coverPassage = document.querySelector('.cover-passage');
+if (coverPassage) {
+  const cpIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        cpIO.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05 });
+  cpIO.observe(coverPassage);
+}
+
+/* ────────────────────────────────────────────────────────────
+   INSCRIPTION NUMBER COUNTER (29 → 38)
+   ──────────────────────────────────────────────────────────── */
+function animateNumber(el, from, to, duration = 1600) {
+  if (REDUCED_MOTION) { el.textContent = to; return; }
+  const start = performance.now();
+  function tick(now) {
+    const t = Math.min(1, (now - start) / duration);
+    // easeOutCubic
+    const eased = 1 - Math.pow(1 - t, 3);
+    const v = Math.round(from + (to - from) * eased);
+    el.firstChild.textContent = v;
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+// Find the 38 inscription and prepare it for animation
+document.querySelectorAll('.inscription-figure').forEach(fig => {
+  const text = fig.textContent.trim();
+  if (text.startsWith('38')) {
+    // Restructure: the figure currently contains "38<span class="small">↑29</span>"
+    // We want to keep the small span hidden initially, then animate 29→38, then reveal small
+    const small = fig.querySelector('.small');
+    if (small) small.style.opacity = '0';
+
+    // Set initial display to 29
+    // First text node is "38" — replace with "29" initially
+    fig.firstChild.textContent = '29';
+
+    const numIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          animateNumber(fig, 29, 38, 1600);
+          if (small) {
+            setTimeout(() => {
+              small.style.transition = 'opacity 0.8s ease-out';
+              small.style.opacity = '1';
+            }, 1400);
+          }
+          numIO.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    numIO.observe(fig);
+  }
+});
+
+/* ────────────────────────────────────────────────────────────
+   TOOLTIP SYSTEM — position-aware, smooth, accessible
+   ──────────────────────────────────────────────────────────── */
+const allTooltipTriggers = document.querySelectorAll('.gloss, sup.cite');
+const tooltipBackdrop = document.getElementById('tooltip-backdrop');
+const IS_MOBILE = () => window.matchMedia('(max-width: 720px)').matches;
+const CAN_HOVER = window.matchMedia('(hover: hover)').matches;
+let openTooltipTimeout = null;
+
+function closeAllTooltips(except) {
+  allTooltipTriggers.forEach(t => {
+    if (t !== except) t.classList.remove('open');
+  });
+  if (tooltipBackdrop) tooltipBackdrop.classList.remove('visible');
+}
+
+function positionTooltip(trigger) {
+  if (IS_MOBILE()) return; // mobile uses fixed bottom sheet
+  const tooltip = trigger.querySelector('.gloss-tooltip, .cite-tooltip');
+  if (!tooltip) return;
+  const rect = trigger.getBoundingClientRect();
+  const inBottomHalf = rect.top > window.innerHeight * 0.6;
+  if (inBottomHalf) {
+    tooltip.classList.add('above');
+  } else {
+    tooltip.classList.remove('above');
+  }
+}
+
+allTooltipTriggers.forEach(t => {
+  // Make focusable for keyboard
+  if (!t.hasAttribute('tabindex')) t.setAttribute('tabindex', '0');
+  if (!t.hasAttribute('role')) t.setAttribute('role', 'button');
+
+  // Tap/click
+  t.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const wasOpen = t.classList.contains('open');
+    closeAllTooltips();
+    if (!wasOpen) {
+      positionTooltip(t);
+      t.classList.add('open');
+      if (IS_MOBILE() && tooltipBackdrop) tooltipBackdrop.classList.add('visible');
+    }
+  });
+
+  // Keyboard
+  t.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      t.click();
+    }
+  });
+
+  // Desktop hover
+  if (CAN_HOVER) {
+    t.addEventListener('mouseenter', () => {
+      clearTimeout(openTooltipTimeout);
+      closeAllTooltips(t);
+      positionTooltip(t);
+      t.classList.add('open');
+    });
+    t.addEventListener('mouseleave', () => {
+      clearTimeout(openTooltipTimeout);
+      openTooltipTimeout = setTimeout(() => {
+        t.classList.remove('open');
+      }, 220);
+    });
+    const tooltip = t.querySelector('.gloss-tooltip, .cite-tooltip');
+    if (tooltip) {
+      tooltip.addEventListener('mouseenter', () => clearTimeout(openTooltipTimeout));
+      tooltip.addEventListener('mouseleave', () => {
+        openTooltipTimeout = setTimeout(() => t.classList.remove('open'), 220);
+      });
+    }
+  }
+});
+
+// Close on outside tap
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.gloss') && !e.target.closest('sup.cite')) {
+    closeAllTooltips();
+  }
+});
+
+// Close buttons inside tooltips
+document.querySelectorAll('.gloss-tooltip-close, .cite-tooltip-close').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeAllTooltips();
+  });
+});
+
+// Mobile backdrop tap closes
+if (tooltipBackdrop) {
+  tooltipBackdrop.addEventListener('click', () => closeAllTooltips());
+}
+
+// Escape closes
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeAllTooltips();
+});
+
+/* ────────────────────────────────────────────────────────────
+   CITATION MARGINALIA ANCHOR — smooth scroll + highlight
+   ──────────────────────────────────────────────────────────── */
+document.querySelectorAll('.cite-marginalia-link').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const id = link.getAttribute('href').substring(1);
+    const target = document.getElementById(id);
+    if (target) {
+      closeAllTooltips();
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      // Highlight after scroll completes
+      setTimeout(() => {
+        target.classList.remove('highlight'); // reset if already there
+        // Force reflow to restart animation
+        void target.offsetWidth;
+        target.classList.add('highlight');
+        setTimeout(() => target.classList.remove('highlight'), 2200);
+      }, 500);
+    }
+  });
+});
+
+/* ────────────────────────────────────────────────────────────
+   CHART.JS — Cinematic Visualizations
+   ──────────────────────────────────────────────────────────── */
+function initCharts() {
+  if (typeof Chart === 'undefined') {
+    // Chart.js not loaded yet, retry
+    setTimeout(initCharts, 100);
+    return;
+  }
+
+  const EMBER = '#c9a227';
+  const EMBER_PALE = '#e3c772';
+  const EMBER_DEEP = '#8a6f15';
+  const EMBER_BRIGHT = '#f0d678';
+  const BONE = '#ebe4d2';
+  const BONE_DIM = '#9b9484';
+  const BONE_FAINT = '#6a655b';
+  const VOID = '#0a0908';
+  const RUST = '#8b3a1b';
+  const BLOOD = '#6b1818';
+
+  Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+  Chart.defaults.font.size = 10;
+  Chart.defaults.color = BONE_DIM;
+  Chart.defaults.borderColor = 'rgba(201, 162, 39, 0.15)';
+
+  /* Ink-bleed gradient helper */
+  function inkGradient(ctx, chartArea, baseColor, direction = 'horizontal') {
+    if (!chartArea) return baseColor;
+    const gradient = direction === 'horizontal'
+      ? ctx.createLinearGradient(chartArea.left, 0, chartArea.right, 0)
+      : ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+    gradient.addColorStop(0, baseColor.replace(/[\d.]+\)$/, '0.95)'));
+    gradient.addColorStop(1, baseColor.replace(/[\d.]+\)$/, '0.7)'));
+    return gradient;
+  }
+
+  /* Custom HTML tooltip — used by all charts */
+  function makeCustomTooltip(sourceLabel) {
+    return function(context) {
+      const { chart, tooltip } = context;
+      let tipEl = chart.canvas.parentNode.querySelector('.chart-tooltip');
+      if (!tipEl) {
+        tipEl = document.createElement('div');
+        tipEl.className = 'chart-tooltip';
+        chart.canvas.parentNode.appendChild(tipEl);
+      }
+      if (tooltip.opacity === 0) {
+        tipEl.classList.remove('visible');
+        return;
+      }
+      const dp = tooltip.dataPoints && tooltip.dataPoints[0];
+      if (!dp) return;
+      const label = dp.label;
+      const value = dp.formattedValue;
+      const fmt = dp.dataset._fmt || ((v, l) => v);
+      tipEl.innerHTML = `
+        <span class="label">${label}</span>
+        <span class="value">${fmt(dp.parsed.x !== undefined ? dp.parsed.x : dp.parsed.y, label)}</span>
+        ${sourceLabel ? `<span class="source">${sourceLabel}</span>` : ''}
+      `;
+      const pos = chart.canvas.getBoundingClientRect();
+      tipEl.style.left = (tooltip.caretX) + 'px';
+      tipEl.style.top = (tooltip.caretY - 60) + 'px';
+      tipEl.style.transform = 'translateX(-50%)';
+      tipEl.classList.add('visible');
+    };
+  }
+
+  const baseTooltipConfig = {
+    enabled: false,
+    position: 'nearest',
+    intersect: false
+  };
+
+  /* ──────── VIZ 1: The Vault ──────── */
+  const vaultEl = document.getElementById('vault');
+  if (vaultEl) {
+    const vaultAnnotation = {
+      id: 'vaultAnnotation',
+      afterDatasetsDraw(chart) {
+        const { ctx, chartArea, scales } = chart;
+        if (!scales.x) return;
+        const x = scales.x.getPixelForValue(54.67);
+        ctx.save();
+        ctx.strokeStyle = 'rgba(201, 162, 39, 0.45)';
+        ctx.setLineDash([3, 3]);
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(x, chartArea.top + 10);
+        ctx.lineTo(x, chartArea.bottom);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.font = "8px 'IBM Plex Mono'";
+        ctx.fillStyle = '#c9a227';
+        ctx.textAlign = 'center';
+        ctx.fillText('14M HOUSEHOLDS', x, chartArea.top + 4);
+        ctx.restore();
+      }
+    };
+
+    new Chart(vaultEl, {
+      type: 'bar',
+      data: {
+        labels: ['Top 10%', 'Bottom 90%'],
+        datasets: [{
+          data: [54.67, 22.33],
+          backgroundColor: function(c) {
+            const chart = c.chart;
+            const { ctx, chartArea } = chart;
+            if (!chartArea) return EMBER;
+            if (c.dataIndex === 0) return inkGradient(ctx, chartArea, 'rgba(201, 162, 39, 1)', 'horizontal');
+            return 'rgba(235, 228, 210, 0.14)';
+          },
+          borderColor: [EMBER, 'rgba(235, 228, 210, 0.32)'],
+          borderWidth: 1,
+          borderRadius: 0,
+          barPercentage: 0.6,
+          categoryPercentage: 0.85,
+          _fmt: (v) => '$' + v.toFixed(1) + ' trillion'
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        maintainAspectRatio: false,
+        responsive: true,
+        animation: { duration: 1800, easing: 'easeOutQuart', delay: 200 },
+        plugins: {
+          legend: { display: false },
+          tooltip: { ...baseTooltipConfig, external: makeCustomTooltip('PEW · SCF 2022') }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(201, 162, 39, 0.07)', drawTicks: false },
+            ticks: { color: BONE_FAINT, callback: (v) => '$' + v + 'T' },
+            border: { color: 'rgba(201, 162, 39, 0.2)' },
+            max: 80
+          },
+          y: {
+            grid: { display: false },
+            ticks: { color: BONE_DIM, font: { size: 11 } },
+            border: { display: false }
+          }
+        }
+      },
+      plugins: [vaultAnnotation]
+    });
+  }
+
+  /* ──────── VIZ 2: The Door ──────── */
+  const doorEl = document.getElementById('door');
+  if (doorEl) {
+    const doorAnnotation = {
+      id: 'doorAnnotation',
+      afterDatasetsDraw(chart) {
+        const { ctx, chartArea, scales } = chart;
+        if (!scales.x || !scales.y) return;
+        // Bracket on the right of the chart showing the 41.6pt gap
+        const x = chartArea.right + 2;
+        const yTop = scales.y.getPixelForValue(78.4);
+        const yBot = scales.y.getPixelForValue(36.8);
+
+        ctx.save();
+        ctx.strokeStyle = 'rgba(201, 162, 39, 0.55)';
+        ctx.lineWidth = 0.8;
+        // Horizontal lines at the top and bottom values, across the chart
+        ctx.setLineDash([2, 3]);
+        ctx.beginPath();
+        ctx.moveTo(chartArea.left, yTop);
+        ctx.lineTo(chartArea.right, yTop);
+        ctx.moveTo(chartArea.left, yBot);
+        ctx.lineTo(chartArea.right, yBot);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Label at the right end of each line
+        ctx.font = "8px 'IBM Plex Mono'";
+        ctx.fillStyle = '#c9a227';
+        ctx.textAlign = 'right';
+        ctx.fillText('78.4%', chartArea.right - 4, yTop - 4);
+        ctx.fillStyle = '#8b3a1b';
+        ctx.fillText('36.8%', chartArea.right - 4, yBot - 4);
+
+        // Center label "41.6 PT GAP" between them, centered horizontally
+        ctx.fillStyle = '#c9a227';
+        ctx.textAlign = 'center';
+        ctx.font = "9px 'IBM Plex Mono'";
+        const midY = (yTop + yBot) / 2;
+        ctx.save();
+        ctx.translate(chartArea.left + (chartArea.right - chartArea.left) * 0.42, midY);
+        ctx.fillText('— 41.6 PT GAP —', 0, 0);
+        ctx.restore();
+
+        ctx.restore();
+      }
+    };
+
+    new Chart(doorEl, {
+      type: 'bar',
+      data: {
+        labels: ['Under 35', '35–44', '45–54', '55–64', '65+'],
+        datasets: [{
+          data: [36.8, 61.1, 69.2, 75.9, 78.4],
+          backgroundColor: function(c) {
+            const chart = c.chart;
+            const { ctx, chartArea } = chart;
+            if (!chartArea) return EMBER;
+            const colors = [
+              'rgba(139, 58, 27, 1)',
+              'rgba(139, 58, 27, 0.55)',
+              'rgba(201, 162, 39, 0.35)',
+              'rgba(201, 162, 39, 0.7)',
+              'rgba(201, 162, 39, 1)'
+            ];
+            return inkGradient(ctx, chartArea, colors[c.dataIndex], 'vertical');
+          },
+          borderWidth: 0,
+          borderRadius: 0,
+          barPercentage: 0.72,
+          _fmt: (v) => v.toFixed(1) + '% homeownership'
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        responsive: true,
+        animation: { duration: 1800, easing: 'easeOutQuart', delay: 200 },
+        plugins: {
+          legend: { display: false },
+          tooltip: { ...baseTooltipConfig, external: makeCustomTooltip('CENSUS · Q1 2026') }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: BONE_DIM, font: { size: 10 } },
+            border: { color: 'rgba(201, 162, 39, 0.2)' }
+          },
+          y: {
+            grid: { color: 'rgba(201, 162, 39, 0.06)', drawTicks: false },
+            ticks: { color: BONE_FAINT, callback: (v) => v + '%', stepSize: 20 },
+            border: { display: false }, max: 90, min: 0
+          }
+        }
+      },
+      plugins: [doorAnnotation]
+    });
+  }
+
+  /* ──────── VIZ 3: The Held Throne ──────── */
+  const throneEl = document.getElementById('throne');
+  if (throneEl) {
+    const throneAnnotations = {
+      id: 'throneAnnotations',
+      afterDatasetsDraw(chart) {
+        const { ctx, chartArea, scales } = chart;
+        if (!scales.x || !scales.y) return;
+
+        const x1985 = scales.x.getPixelForValue('1985');
+        const y1985 = scales.y.getPixelForValue(10.8);
+        const x2024 = scales.x.getPixelForValue('2024');
+        const y2024 = scales.y.getPixelForValue(19.5);
+
+        ctx.save();
+
+        // 1985 marker
+        ctx.strokeStyle = 'rgba(201, 162, 39, 0.45)';
+        ctx.setLineDash([3, 3]);
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(x1985, chartArea.bottom);
+        ctx.lineTo(x1985, y1985);
+        ctx.stroke();
+
+        ctx.font = "9px 'IBM Plex Mono'";
+        ctx.fillStyle = '#c9a227';
+        ctx.textAlign = 'center';
+        ctx.fillText('THE DEAL', x1985, chartArea.top + 12);
+        ctx.fillStyle = '#9b9484';
+        ctx.font = "8px 'IBM Plex Mono'";
+        ctx.fillText('10.8%', x1985, chartArea.top + 24);
+
+        // 2024 marker
+        ctx.strokeStyle = 'rgba(139, 58, 27, 0.6)';
+        ctx.setLineDash([3, 3]);
+        ctx.beginPath();
+        ctx.moveTo(x2024, chartArea.bottom);
+        ctx.lineTo(x2024, y2024);
+        ctx.stroke();
+
+        ctx.font = "9px 'IBM Plex Mono'";
+        ctx.fillStyle = '#8b3a1b';
+        ctx.fillText('DEAL EXPIRED', x2024, chartArea.top + 12);
+        ctx.fillStyle = '#9b9484';
+        ctx.font = "8px 'IBM Plex Mono'";
+        ctx.fillText('19.5%', x2024, chartArea.top + 24);
+
+        ctx.restore();
+      }
+    };
+
+    new Chart(throneEl, {
+      type: 'line',
+      data: {
+        labels: ['1948', '1960', '1970', '1985', '1995', '2005', '2015', '2024'],
+        datasets: [{
+          data: [27.0, 20.5, 17.0, 10.8, 12.1, 14.5, 18.9, 19.5],
+          borderColor: EMBER,
+          backgroundColor: function(c) {
+            const chart = c.chart;
+            const { ctx, chartArea } = chart;
+            if (!chartArea) return 'rgba(201, 162, 39, 0.12)';
+            const g = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+            g.addColorStop(0, 'rgba(201, 162, 39, 0.22)');
+            g.addColorStop(1, 'rgba(201, 162, 39, 0.02)');
+            return g;
+          },
+          borderWidth: 1.5,
+          fill: true,
+          tension: 0.32,
+          pointBackgroundColor: VOID,
+          pointBorderColor: EMBER,
+          pointBorderWidth: 1.5,
+          pointRadius: 3.5,
+          pointHoverRadius: 5.5,
+          _fmt: (v) => v.toFixed(1) + '% in labor force'
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        responsive: true,
+        animations: {
+          x: {
+            type: 'number',
+            easing: 'linear',
+            duration: 300,
+            from: NaN,
+            delay(ctx) {
+              if (ctx.type !== 'data' || ctx.xStarted) return 0;
+              ctx.xStarted = true;
+              return ctx.index * 250 + 200;
+            }
+          },
+          y: {
+            type: 'number',
+            easing: 'easeOutQuart',
+            duration: 600,
+            from: (ctx) => ctx.chart.scales.y ? ctx.chart.scales.y.getPixelForValue(0) : 0,
+            delay(ctx) {
+              if (ctx.type !== 'data' || ctx.yStarted) return 0;
+              ctx.yStarted = true;
+              return ctx.index * 250 + 200;
+            }
+          }
+        },
+        layout: { padding: { top: 32 } },
+        plugins: {
+          legend: { display: false },
+          tooltip: { ...baseTooltipConfig, external: makeCustomTooltip('BLS · CPS') }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: { color: BONE_FAINT, font: { size: 9 } },
+            border: { color: 'rgba(201, 162, 39, 0.2)' }
+          },
+          y: {
+            grid: { color: 'rgba(201, 162, 39, 0.06)', drawTicks: false },
+            ticks: { color: BONE_FAINT, callback: (v) => v + '%' },
+            border: { display: false }, min: 0, max: 32
+          }
+        }
+      },
+      plugins: [throneAnnotations]
+    });
+  }
+
+  /* ──────── VIZ 4: The Mirage ──────── */
+  const mirageEl = document.getElementById('mirage');
+  if (mirageEl) {
+    const mirageAnnotations = {
+      id: 'mirageAnnotations',
+      afterDatasetsDraw(chart) {
+        const { ctx, chartArea, scales } = chart;
+        if (!scales.x || !scales.y) return;
+
+        // FROM/TO divider — between bar 3 (charity, index 2) and bar 4 (Gen X, index 3)
+        const yDiv = (scales.y.getPixelForValue(2) + scales.y.getPixelForValue(3)) / 2;
+        ctx.save();
+        ctx.strokeStyle = 'rgba(201, 162, 39, 0.4)';
+        ctx.lineWidth = 0.6;
+        ctx.setLineDash([5, 4]);
+        ctx.beginPath();
+        ctx.moveTo(chartArea.left, yDiv);
+        ctx.lineTo(chartArea.right, yDiv);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // FROM / TO labels at the left margin
+        ctx.font = "8px 'IBM Plex Mono'";
+        ctx.fillStyle = '#c9a227';
+        ctx.textAlign = 'left';
+        // FROM label: above the divider
+        const fromY = (chartArea.top + yDiv) / 2;
+        ctx.save();
+        ctx.translate(chartArea.left - 8, fromY);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('· FROM ·', 0, 0);
+        ctx.restore();
+        // TO label: below the divider
+        const toY = (yDiv + chartArea.bottom) / 2;
+        ctx.save();
+        ctx.translate(chartArea.left - 8, toY);
+        ctx.rotate(-Math.PI / 2);
+        ctx.fillText('· TO ·', 0, 0);
+        ctx.restore();
+
+        // Top sum-line "= $124T TOTAL"
+        ctx.font = "9px 'IBM Plex Mono'";
+        ctx.fillStyle = '#e3c772';
+        ctx.textAlign = 'right';
+        ctx.fillText('Σ  =  $124 TRILLION TOTAL', chartArea.right, chartArea.top - 8);
+
+        ctx.restore();
+      }
+    };
+
+    new Chart(mirageEl, {
+      type: 'bar',
+      data: {
+        labels: [
+          'Sideways to widows first',
+          'From wealthiest 2% only',
+          'To charity',
+          'Gen X (next 25 yrs)',
+          'Millennials (next 25 yrs)'
+        ],
+        datasets: [{
+          data: [54, 62, 18, 39, 46],
+          backgroundColor: function(c) {
+            const chart = c.chart;
+            const { ctx, chartArea } = chart;
+            if (!chartArea) return EMBER;
+            const colors = [
+              'rgba(139, 58, 27, 0.85)',
+              'rgba(201, 162, 39, 1)',
+              'rgba(235, 228, 210, 0.18)',
+              'rgba(201, 162, 39, 0.55)',
+              'rgba(227, 199, 114, 1)'
+            ];
+            return inkGradient(ctx, chartArea, colors[c.dataIndex], 'horizontal');
+          },
+          borderWidth: 0,
+          barPercentage: 0.66,
+          _fmt: (v) => '$' + v + ' trillion'
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        maintainAspectRatio: false,
+        responsive: true,
+        animation: { duration: 2000, easing: 'easeOutQuart', delay: 200 },
+        layout: { padding: { top: 22, left: 20 } },
+        plugins: {
+          legend: { display: false },
+          tooltip: { ...baseTooltipConfig, external: makeCustomTooltip('CERULLI · JUN 2025') }
+        },
+        scales: {
+          x: {
+            grid: { color: 'rgba(201, 162, 39, 0.06)', drawTicks: false },
+            ticks: { color: BONE_FAINT, callback: (v) => '$' + v + 'T' },
+            border: { color: 'rgba(201, 162, 39, 0.2)' },
+            max: 70
+          },
+          y: {
+            grid: { display: false },
+            ticks: { color: BONE_DIM, font: { size: 9 } },
+            border: { display: false }
+          }
+        }
+      },
+      plugins: [mirageAnnotations]
+    });
+  }
+}
+
+// Initialize charts after Chart.js loads
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  setTimeout(initCharts, 50);
+} else {
+  document.addEventListener('DOMContentLoaded', () => setTimeout(initCharts, 50));
+}
+
+/* Inject noise overlays into all .viz containers */
+document.querySelectorAll('.viz').forEach(viz => {
+  if (!viz.querySelector('.viz-noise')) {
+    const noise = document.createElement('div');
+    noise.className = 'viz-noise';
+    noise.setAttribute('aria-hidden', 'true');
+    viz.appendChild(noise);
+  }
+});
+</script>
+
+</body>
+</html>
