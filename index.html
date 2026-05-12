@@ -1686,6 +1686,44 @@ sup.cite.open .cite-tooltip.above {
 .reveal.settled {
   transform: none !important;
 }
+
+/* ──────────── TOOLTIP RENDERING REFINEMENTS ────────────
+   Deterministic vertical anchor + horizontal edge clamping + mobile dock polish.
+   Appended last so these rules win the cascade. */
+@media (min-width: 721px) {
+  .gloss-tooltip, .cite-tooltip {
+    top: 100%;
+    margin-left: var(--tooltip-shift, 0px);
+  }
+  .gloss-tooltip.above, .cite-tooltip.above {
+    top: auto;
+  }
+  .gloss-tooltip::before, .cite-tooltip::before {
+    margin-left: calc(-1 * var(--tooltip-shift, 0px));
+  }
+}
+@media (max-width: 720px) {
+  .gloss-tooltip, .cite-tooltip {
+    max-height: min(70vh, 520px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  /* Keep the label text clear of the close button corner */
+  .gloss-tooltip-label, .cite-tooltip .cite-label {
+    padding-right: 28px;
+  }
+  /* Larger tap target for the close button on touch devices */
+  .gloss-tooltip-close, .cite-tooltip-close {
+    font-size: 18px;
+    padding: 6px 10px;
+    line-height: 1;
+  }
+  .chart-tooltip { white-space: normal; }
+}
+.chart-tooltip {
+  max-width: calc(100vw - 24px);
+}
 </style>
 </head>
 <body>
@@ -2745,15 +2783,44 @@ function closeAllTooltips(except) {
 }
 
 function positionTooltip(trigger) {
-  if (IS_MOBILE()) return; // mobile uses fixed bottom sheet
   const tooltip = trigger.querySelector('.gloss-tooltip, .cite-tooltip');
   if (!tooltip) return;
+  if (IS_MOBILE()) {
+    // mobile uses fixed bottom sheet; clear any desktop shift
+    tooltip.style.removeProperty('--tooltip-shift');
+    tooltip.classList.remove('above');
+    return;
+  }
   const rect = trigger.getBoundingClientRect();
+
+  // Vertical: flip above when the trigger sits in the bottom 40% of the viewport
   const inBottomHalf = rect.top > window.innerHeight * 0.6;
   if (inBottomHalf) {
     tooltip.classList.add('above');
   } else {
     tooltip.classList.remove('above');
+  }
+
+  // Horizontal: clamp tooltip so it never overflows the viewport.
+  // The tooltip is hidden via visibility/opacity but still occupies layout, so
+  // offsetWidth is measurable. Reset prior shift first so measurement is accurate.
+  tooltip.style.setProperty('--tooltip-shift', '0px');
+  const triggerCenter = rect.left + rect.width / 2;
+  const ttWidth = tooltip.offsetWidth || 280;
+  const halfW = ttWidth / 2;
+  const margin = 12;
+  let shift = 0;
+  const leftEdge = triggerCenter - halfW;
+  const rightEdge = triggerCenter + halfW;
+  if (leftEdge < margin) {
+    shift = margin - leftEdge;
+  } else if (rightEdge > window.innerWidth - margin) {
+    shift = (window.innerWidth - margin) - rightEdge;
+  }
+  if (shift) {
+    tooltip.style.setProperty('--tooltip-shift', shift + 'px');
+  } else {
+    tooltip.style.removeProperty('--tooltip-shift');
   }
 }
 
@@ -2917,10 +2984,19 @@ function initCharts() {
         <span class="value">${fmt(dp.parsed.x !== undefined ? dp.parsed.x : dp.parsed.y, label)}</span>
         ${sourceLabel ? `<span class="source">${sourceLabel}</span>` : ''}
       `;
-      const pos = chart.canvas.getBoundingClientRect();
-      tipEl.style.left = (tooltip.caretX) + 'px';
       tipEl.style.top = (tooltip.caretY - 60) + 'px';
       tipEl.style.transform = 'translateX(-50%)';
+      tipEl.style.left = (tooltip.caretX) + 'px';
+      // Clamp horizontally so the tooltip never escapes the viz container
+      const parent = chart.canvas.parentNode;
+      const parentW = parent.clientWidth;
+      const tipW = tipEl.offsetWidth;
+      const halfTipW = tipW / 2;
+      const edgePad = 8;
+      let leftPx = tooltip.caretX;
+      if (leftPx - halfTipW < edgePad) leftPx = halfTipW + edgePad;
+      if (leftPx + halfTipW > parentW - edgePad) leftPx = parentW - halfTipW - edgePad;
+      tipEl.style.left = leftPx + 'px';
       tipEl.classList.add('visible');
     };
   }
